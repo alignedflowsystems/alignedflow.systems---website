@@ -5,7 +5,8 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { motion } from "motion/react"
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 
 interface TabContent {
   badge: string
@@ -33,11 +34,19 @@ interface Feature108Props {
 const Feature108 = ({
   badge = "Our Services",
   heading = "Everything You Need to Grow Online",
-  description = "From design to marketing, we deliver complete digital solutions tailored to your business.",
+  description = "From design to launch, complete digital solutions tailored to your business.",
   tabs = [],
 }: Feature108Props) => {
+  const searchParams = useSearchParams()
   const [active, setActive] = useState(tabs[0]?.value ?? "")
   const touchStartX = useRef<number | null>(null)
+
+  useEffect(() => {
+    const tabParam = searchParams.get("tab")
+    if (tabParam && tabs.find((t) => t.value === tabParam)) {
+      setActive(tabParam)
+    }
+  }, [searchParams])
 
   const activeIndex = tabs.findIndex((t) => t.value === active)
 
@@ -55,7 +64,9 @@ const Feature108 = ({
   }
 
   return (
-    <section className="py-24 px-4">
+    <section className="relative py-24 px-4 bg-background overflow-hidden">
+      <div className="pointer-events-none absolute -top-40 right-0 w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-40 left-0 w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-3xl" />
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center gap-3 text-center">
           <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">{badge}</span>
@@ -68,11 +79,10 @@ const Feature108 = ({
             {tabs.map((tab) => (
               <TabsTrigger key={tab.value} value={tab.value} asChild>
                 <ShimmerButton
-                  background="rgba(6, 100, 130, 0.95)"
+                  background="rgba(8, 145, 178, 0.85)"
                   shimmerColor="#00ffff"
-                  shimmerSpread="160deg"
                   borderRadius="0.75rem"
-                  shimmerDuration="1.8s"
+                  shimmerDuration="3s"
                   className="flex items-center gap-2 px-4 py-3 text-sm font-semibold data-[state=inactive]:opacity-50 data-[state=inactive]:scale-95 transition-all"
                 >
                   {tab.icon} {tab.label}
@@ -128,8 +138,8 @@ const Feature108 = ({
                       </Badge>
                       <h3 className="text-3xl font-semibold lg:text-5xl">{tab.content.title}</h3>
                       <p className="text-muted-foreground lg:text-lg">{tab.content.description}</p>
-                      <Button className="mt-2.5 w-fit gap-2 bg-cyan-600 hover:bg-cyan-700 text-white" size="lg">
-                        Get a Quote
+                      <Button className="mt-2.5 w-fit gap-2 bg-cyan-600 hover:bg-cyan-700 text-white" size="lg" asChild>
+                        <a href={`/contact?package=${tab.value}`}>Get a Quote</a>
                       </Button>
                     </div>
                     <img

@@ -1,25 +1,57 @@
 'use client';
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useScroll } from '@/components/ui/use-scroll';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { Typewriter } from '@/components/ui/typewriter-text';
 
 const navLinks = [
-    { label: 'Home', href: '#hero' },
-    { label: 'Services', href: '#services' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/#hero', page: false },
+    { label: 'About', href: '/#about', page: false },
+    { label: 'Services', href: '/#services', page: false },
+    { label: 'Team', href: '/team', page: true },
+    { label: 'Contact', href: '/contact', page: true },
 ];
 
 export function Header() {
     const scrolled = useScroll(20);
+    const pathname = usePathname();
     const [menuOpen, setMenuOpen] = React.useState(false);
+    const [activeSection, setActiveSection] = React.useState<string>('hero');
 
-    const handleNavClick = (href: string) => {
+    React.useEffect(() => {
+        if (pathname !== '/') return;
+        const sections = ['hero', 'services', 'about'];
+        const observers = sections.map((id) => {
+            const el = document.getElementById(id);
+            if (!el) return null;
+            const observer = new IntersectionObserver(
+                ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+                { rootMargin: '-40% 0px -55% 0px' }
+            );
+            observer.observe(el);
+            return observer;
+        });
+        return () => observers.forEach((o) => o?.disconnect());
+    }, [pathname]);
+
+    const isActive = (link: typeof navLinks[0]) => {
+        if (link.page) return pathname === link.href;
+        return pathname === '/' && link.href === `/#${activeSection}`;
+    };
+
+    const handleNavClick = (href: string, page: boolean) => {
         setMenuOpen(false);
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        // For page routes, let the browser navigate normally
+        if (page) return;
+        // If already on homepage, smooth-scroll to the section
+        if (pathname === '/') {
+            const hash = href.replace('/', '');
+            const el = document.querySelector(hash);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+        // Otherwise, let the browser navigate to /#section
     };
 
     return (
@@ -35,8 +67,7 @@ export function Header() {
                 {/* Left: Logo */}
                 <div className="flex items-center">
                     <a
-                        href="#hero"
-                        onClick={(e) => { e.preventDefault(); handleNavClick('#hero'); }}
+                        href="/"
                         className="flex flex-col leading-tight text-cyan-400 tracking-tight font-bold"
                     >
                         <span className="text-lg">
@@ -54,13 +85,23 @@ export function Header() {
                 </div>
 
                 {/* Center: Nav links — always pinned to middle column */}
-                <nav className="hidden md:flex items-center justify-center gap-8">
+                <nav className="hidden md:flex items-center justify-center gap-6">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
                             href={link.href}
-                            onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                            className="text-sm font-medium text-white/80 hover:text-cyan-400 transition-colors"
+                            onClick={(e) => {
+                                if (!link.page && pathname === '/') {
+                                    e.preventDefault();
+                                    handleNavClick(link.href, link.page);
+                                }
+                            }}
+                            className={cn(
+                                'text-sm font-medium transition-colors',
+                                isActive(link)
+                                    ? 'text-cyan-400'
+                                    : 'text-white/80 hover:text-cyan-400'
+                            )}
                         >
                             {link.label}
                         </a>
@@ -72,8 +113,7 @@ export function Header() {
                 {/* Right: CTA / mobile toggle */}
                 <div className="flex items-center justify-end">
                     <a
-                        href="#contact"
-                        onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }}
+                        href="/contact"
                         className="hidden md:inline-flex bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
                     >
                         Get a Quote
@@ -100,15 +140,25 @@ export function Header() {
                         <a
                             key={link.href}
                             href={link.href}
-                            onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                            className="text-sm font-medium text-white/80 hover:text-cyan-400 transition-colors py-2.5 px-2 rounded-lg hover:bg-white/5"
+                            onClick={(e) => {
+                                if (!link.page && pathname === '/') {
+                                    e.preventDefault();
+                                    handleNavClick(link.href, link.page);
+                                }
+                                setMenuOpen(false);
+                            }}
+                            className={cn(
+                                'text-sm font-medium transition-colors py-2.5 px-2 rounded-lg hover:bg-white/5',
+                                isActive(link)
+                                    ? 'text-cyan-400'
+                                    : 'text-white/80 hover:text-cyan-400'
+                            )}
                         >
                             {link.label}
                         </a>
                     ))}
                     <a
-                        href="#contact"
-                        onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }}
+                        href="/contact"
                         className="mt-2 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors text-center"
                     >
                         Get a Quote

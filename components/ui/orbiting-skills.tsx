@@ -1,15 +1,10 @@
 "use client"
 import React, { useEffect, useState, memo } from 'react';
 
-// --- Type Definitions ---
-type IconType = 'html' | 'css' | 'javascript' | 'react' | 'node' | 'tailwind';
-
+type IconType = 'figma' | 'stripe' | 'vercel' | 'wordpress' | 'framer' | 'sanity';
 type GlowColor = 'cyan' | 'purple';
 
-interface SkillIconProps {
-  type: IconType;
-}
-
+interface SkillIconProps { type: IconType }
 interface SkillConfig {
   id: string;
   orbitRadius: number;
@@ -20,74 +15,58 @@ interface SkillConfig {
   glowColor: GlowColor;
   label: string;
 }
+interface OrbitingSkillProps { config: SkillConfig; angle: number }
+interface GlowingOrbitPathProps { radius: number; glowColor?: GlowColor; animationDelay?: number }
 
-interface OrbitingSkillProps {
-  config: SkillConfig;
-  angle: number;
-}
-
-interface GlowingOrbitPathProps {
-  radius: number;
-  glowColor?: GlowColor;
-  animationDelay?: number;
-}
-
-// --- Improved SVG Icon Components ---
 const iconComponents: Record<IconType, { component: () => React.JSX.Element; color: string }> = {
-  html: {
+  figma: {
     component: () => (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-        <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" fill="#E34F26"/>
+        <path d="M15.332 8.668a3.333 3.333 0 0 0 0-6.663H8.668a3.333 3.333 0 0 0 0 6.663 3.333 3.333 0 0 0 0 6.665 3.333 3.333 0 0 0 3.332 3.332 3.333 3.333 0 0 0 3.332-3.332V8.668zm0 0a3.333 3.333 0 1 0 0 6.666 3.333 3.333 0 0 0 0-6.666z" fill="#F24E1E"/>
       </svg>
     ),
-    color: '#E34F26'
+    color: '#F24E1E'
   },
-  css: {
+  stripe: {
     component: () => (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-        <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.751L12 19.351l5.379-1.443.744-8.157z" fill="#1572B6"/>
+        <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z" fill="#635BFF"/>
       </svg>
     ),
-    color: '#1572B6'
+    color: '#635BFF'
   },
-  javascript: {
+  vercel: {
     component: () => (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-        <rect width="24" height="24" fill="#F7DF1E"/>
-        <path d="M22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z" fill="#323330"/>
+        <path d="M24 22.525H0l12-21.05 12 21.05z" fill="#ffffff"/>
       </svg>
     ),
-    color: '#F7DF1E'
+    color: '#ffffff'
   },
-  react: {
-    component: () => (
-      <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-        <g stroke="#61DAFB" strokeWidth="1" fill="none">
-          <circle cx="12" cy="12" r="2.05" fill="#61DAFB"/>
-          <ellipse cx="12" cy="12" rx="11" ry="4.2"/>
-          <ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)"/>
-          <ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)"/>
-        </g>
-      </svg>
-    ),
-    color: '#61DAFB'
-  },
-  node: {
+  wordpress: {
     component: () => (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-        <path d="M11.998 24c-.321 0-.641-.084-.922-.247l-2.936-1.737c-.438-.245-.224-.332-.08-.383.585-.203.703-.25 1.328-.602.065-.037.151-.023.218.017l2.256 1.339c.082.045.198.045.275 0l8.795-5.076c.082-.047.135-.141.135-.241V6.921c0-.103-.055-.198-.137-.246l-8.791-5.072c-.081-.047-.189-.047-.273 0L2.075 6.675c-.084.048-.139.144-.139.246v10.146c0 .1.055.194.139.241l2.409 1.392c1.307.654 2.108-.116 2.108-.89V7.787c0-.142.114-.253.256-.253h1.115c.139 0 .255.112.255.253v10.021c0 1.745-.95 2.745-2.604 2.745-.508 0-.909 0-2.026-.551L1.352 18.675C.533 18.215 0 17.352 0 16.43V6.284c0-.922.533-1.786 1.352-2.245L10.147-.963c.8-.452 1.866-.452 2.657 0l8.796 5.002c.819.459 1.352 1.323 1.352 2.245v10.146c0 .922-.533 1.783-1.352 2.245l-8.796 5.078c-.28.163-.601.247-.926.247zm2.717-6.993c-3.849 0-4.654-1.766-4.654-3.246 0-.14.114-.253.256-.253h1.136c.127 0 .232.091.252.215.173 1.164.686 1.752 3.01 1.752 1.852 0 2.639-.419 2.639-1.401 0-.566-.224-1.03-3.099-1.249-2.404-.184-3.89-.768-3.89-2.689 0-1.771 1.491-2.825 3.991-2.825 2.808 0 4.199.975 4.377 3.068.007.072-.019.141-.065.193-.047.049-.111.077-.178.077h-1.14c-.119 0-.225-.083-.248-.196-.276-1.224-.944-1.616-2.746-1.616-2.023 0-2.259.705-2.259 1.234 0 .641.278.827 3.006 1.19 2.7.359 3.982.866 3.982 2.771 0 1.922-1.603 3.024-4.399 3.024z" fill="#339933"/>
+        <path d="M21.469 6.825c.61 1.568.946 3.28.946 5.175 0 3.978-2.146 7.457-5.338 9.36L21.469 6.825zm-3.008 0c.51 1.364.787 2.842.787 4.371 0 .786-.075 1.556-.216 2.302l-2.905 8.412c2.79-1.7 4.67-4.79 4.67-8.316 0-2.44-.868-4.681-2.336-6.769zm-8.961-.3C9.5 6.525 9.5 6.527 9.5 6.529c0-.003.002-.006.003-.009l-.003.005zm0 0c0-.007.003-.013.005-.02l-.005.02zm11.5.3zM12 2.252c5.514 0 9.998 4.484 9.998 9.998S17.514 22.248 12 22.248 2.002 17.764 2.002 12 6.486 2.252 12 2.252zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-5.925 5.925c1.588-1.587 3.77-2.567 6.175-2.567.806 0 1.586.098 2.33.278L9.22 14.316 5.887 5.86c.057-.065.118-.128.188-.187v.252zm-1.45 1.45c-.003.004-.005.008-.008.011l.008-.011zm.017-.02c-.006.007-.012.014-.017.02l.017-.02zm-.025.03C3.525 8.735 2.58 10.253 2.58 12c0 3.544 2.271 6.556 5.425 7.658L3.617 7.385zm1.47 14.032L9.96 12.86l3.257 8.945c-1.03.284-2.118.437-3.237.437-1.38 0-2.703-.248-3.925-.698zm5.73.42l3.086-8.966 3.086 8.42c-.003.006-.007.011-.01.016l-6.162.53z" fill="#21759B"/>
       </svg>
     ),
-    color: '#339933'
+    color: '#21759B'
   },
-  tailwind: {
+  framer: {
     component: () => (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" fill="#06B6D4"/>
+        <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z" fill="#0055FF"/>
       </svg>
     ),
-    color: '#06B6D4'
-  }
+    color: '#0055FF'
+  },
+  sanity: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M13.868 0C18.302.01 21.96 3.65 21.97 8.082c0 2.577-1.204 4.879-3.074 6.39v.01H18.9l-4.26-2.823V8.082c-.01-1.913-1.563-3.456-3.476-3.456-.663 0-1.29.192-1.82.52L6.084 2.348A8.06 8.06 0 0 1 13.868 0zM9.74 15.928v3.59L6.084 21.65V18.06l3.656-2.13zm-3.656 5.722L10.13 24H6.084v-2.35zm7.904-9.483 4.14 2.747a8.06 8.06 0 0 1-4.14 1.13v-3.877zm-7.904-7.52 4.26 2.824c-.046.246-.072.5-.072.754v.378H6.084v-3.956zm0 4.912h4.188v2.956H6.084v-2.956z" fill="#F03E2F"/>
+      </svg>
+    ),
+    color: '#F03E2F'
+  },
 };
 
 const SkillIcon = memo(({ type }: SkillIconProps) => {
@@ -97,12 +76,12 @@ const SkillIcon = memo(({ type }: SkillIconProps) => {
 SkillIcon.displayName = 'SkillIcon';
 
 const skillsConfig: SkillConfig[] = [
-  { id: 'html', orbitRadius: 100, size: 40, speed: 1, iconType: 'html', phaseShift: 0, glowColor: 'cyan', label: 'HTML5' },
-  { id: 'css', orbitRadius: 100, size: 45, speed: 1, iconType: 'css', phaseShift: (2 * Math.PI) / 3, glowColor: 'cyan', label: 'CSS3' },
-  { id: 'javascript', orbitRadius: 100, size: 40, speed: 1, iconType: 'javascript', phaseShift: (4 * Math.PI) / 3, glowColor: 'cyan', label: 'JavaScript' },
-  { id: 'react', orbitRadius: 180, size: 50, speed: -0.6, iconType: 'react', phaseShift: 0, glowColor: 'purple', label: 'React' },
-  { id: 'node', orbitRadius: 180, size: 45, speed: -0.6, iconType: 'node', phaseShift: (2 * Math.PI) / 3, glowColor: 'purple', label: 'Node.js' },
-  { id: 'tailwind', orbitRadius: 180, size: 40, speed: -0.6, iconType: 'tailwind', phaseShift: (4 * Math.PI) / 3, glowColor: 'purple', label: 'Tailwind CSS' },
+  { id: 'figma',     orbitRadius: 100, size: 40, speed: 1,    iconType: 'figma',     phaseShift: 0,                    glowColor: 'cyan',   label: 'Figma' },
+  { id: 'stripe',    orbitRadius: 100, size: 45, speed: 1,    iconType: 'stripe',    phaseShift: (2 * Math.PI) / 3,    glowColor: 'cyan',   label: 'Stripe' },
+  { id: 'vercel',    orbitRadius: 100, size: 40, speed: 1,    iconType: 'vercel',    phaseShift: (4 * Math.PI) / 3,    glowColor: 'cyan',   label: 'Vercel' },
+  { id: 'wordpress', orbitRadius: 180, size: 50, speed: -0.6, iconType: 'wordpress', phaseShift: 0,                    glowColor: 'purple', label: 'WordPress' },
+  { id: 'framer',    orbitRadius: 180, size: 45, speed: -0.6, iconType: 'framer',    phaseShift: (2 * Math.PI) / 3,    glowColor: 'purple', label: 'Framer' },
+  { id: 'sanity',    orbitRadius: 180, size: 40, speed: -0.6, iconType: 'sanity',    phaseShift: (4 * Math.PI) / 3,    glowColor: 'purple', label: 'Sanity CMS' },
 ];
 
 const OrbitingSkill = memo(({ config, angle }: OrbitingSkillProps) => {
@@ -145,10 +124,10 @@ OrbitingSkill.displayName = 'OrbitingSkill';
 
 const GlowingOrbitPath = memo(({ radius, glowColor = 'cyan', animationDelay = 0 }: GlowingOrbitPathProps) => {
   const glowColors = {
-    cyan: { primary: 'rgba(6, 182, 212, 0.4)', secondary: 'rgba(6, 182, 212, 0.2)', border: 'rgba(6, 182, 212, 0.3)' },
-    purple: { primary: 'rgba(147, 51, 234, 0.4)', secondary: 'rgba(147, 51, 234, 0.2)', border: 'rgba(147, 51, 234, 0.3)' }
+    cyan:   { primary: 'rgba(6, 182, 212, 0.4)',   secondary: 'rgba(6, 182, 212, 0.2)',   border: 'rgba(6, 182, 212, 0.3)' },
+    purple: { primary: 'rgba(147, 51, 234, 0.4)',  secondary: 'rgba(147, 51, 234, 0.2)',  border: 'rgba(147, 51, 234, 0.3)' }
   };
-  const colors = glowColors[glowColor] || glowColors.cyan;
+  const colors = glowColors[glowColor];
 
   return (
     <div
@@ -172,64 +151,86 @@ const GlowingOrbitPath = memo(({ radius, glowColor = 'cyan', animationDelay = 0 
 });
 GlowingOrbitPath.displayName = 'GlowingOrbitPath';
 
+const CONTENT_DIAMETER = 410;
+
 export default function OrbitingSkills() {
   const [time, setTime] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [scale, setScale] = useState(1);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const update = () => setScale(Math.min(1, el.offsetWidth / CONTENT_DIAMETER));
+    update();
+    let debounceTimer: ReturnType<typeof setTimeout>;
+    const debouncedUpdate = () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(update, 100);
+    };
+    window.addEventListener('resize', debouncedUpdate);
+    return () => {
+      clearTimeout(debounceTimer);
+      window.removeEventListener('resize', debouncedUpdate);
+    };
+  }, []);
 
   useEffect(() => {
     if (isPaused) return;
     let animationFrameId: number;
     let lastTime = performance.now();
-
     const animate = (currentTime: number) => {
       const deltaTime = (currentTime - lastTime) / 1000;
       lastTime = currentTime;
       setTime(prevTime => prevTime + deltaTime);
       animationFrameId = requestAnimationFrame(animate);
     };
-
     animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
   }, [isPaused]);
 
   const orbitConfigs: Array<{ radius: number; glowColor: GlowColor; delay: number }> = [
-    { radius: 100, glowColor: 'cyan', delay: 0 },
-    { radius: 180, glowColor: 'purple', delay: 1.5 }
+    { radius: 100, glowColor: 'cyan',   delay: 0   },
+    { radius: 180, glowColor: 'purple', delay: 1.5 },
   ];
 
   return (
     <main className="w-full flex items-center justify-center overflow-hidden">
       <div
+        ref={containerRef}
         className="relative w-[calc(100vw-40px)] h-[calc(100vw-40px)] md:w-[450px] md:h-[450px] flex items-center justify-center"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Central icon */}
-        <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center z-10 relative shadow-2xl">
-          <div className="absolute inset-0 rounded-full bg-cyan-500/30 blur-xl animate-pulse" />
-          <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="relative z-10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#06B6D4" />
-                  <stop offset="100%" stopColor="#9333EA" />
-                </linearGradient>
-              </defs>
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
+        <div className="absolute inset-0 flex items-center justify-center" style={{ transform: `scale(${scale})` }}>
+          {/* Central icon */}
+          <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center z-10 relative shadow-2xl">
+            <div className="absolute inset-0 rounded-full bg-cyan-500/30 blur-xl animate-pulse" />
+            <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="relative z-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#06B6D4" />
+                    <stop offset="100%" stopColor="#9333EA" />
+                  </linearGradient>
+                </defs>
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
           </div>
+
+          {orbitConfigs.map((config) => (
+            <GlowingOrbitPath key={`path-${config.radius}`} radius={config.radius} glowColor={config.glowColor} animationDelay={config.delay} />
+          ))}
+
+          {skillsConfig.map((config) => {
+            const angle = time * config.speed + (config.phaseShift || 0);
+            return <OrbitingSkill key={config.id} config={config} angle={angle} />;
+          })}
         </div>
-
-        {orbitConfigs.map((config) => (
-          <GlowingOrbitPath key={`path-${config.radius}`} radius={config.radius} glowColor={config.glowColor} animationDelay={config.delay} />
-        ))}
-
-        {skillsConfig.map((config) => {
-          const angle = time * config.speed + (config.phaseShift || 0);
-          return <OrbitingSkill key={config.id} config={config} angle={angle} />;
-        })}
       </div>
     </main>
   );

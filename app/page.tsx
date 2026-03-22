@@ -1,3 +1,6 @@
+// NOTE (Task 15): This file uses "use client" because multiple motion/framer-motion
+// components are used inline with whileInView/animate. To convert to a Server Component
+// in a future refactor, extract each animated section into its own "use client" wrapper.
 "use client"
 
 import React from "react"
@@ -20,6 +23,9 @@ import { LogoCloud } from "@/components/ui/logo-cloud-2"
 import { Feature108 } from "@/components/ui/shadcnblocks-com-feature108"
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1"
 import OrbitingSkills from "@/components/ui/orbiting-skills"
+import { StatsCounter } from "@/components/StatsCounter"
+import { SiteFooter } from "@/components/ui/site-footer"
+import { FAQSection } from "@/components/ui/faq"
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -30,11 +36,11 @@ const services = [
     label: "Landing Page",
     content: {
       badge: "Landing Page",
-      title: "A website that works as hard as you do.",
+      title: "A focused, high-converting web presence.",
       description:
-        "A single, high-converting page built around your offer. Perfect for coaches, therapists, and service providers who want a professional online presence without the complexity. Fast delivery. No filler. Just results.",
-      buttonText: "Book a Free Call",
-      imageSrc: "https://shadcnblocks.com/images/block/placeholder-dark-1.svg",
+        "A single, professionally crafted page built around a specific offer or service. Designed for clarity and conversion, this solution is well-suited to coaches, therapists, and independent service providers seeking an impactful online presence with a fast, structured delivery.",
+      buttonText: "Get a Quote",
+      imageSrc: "/services/landing-page.svg",
       imageAlt: "Landing Page Package",
     },
   },
@@ -44,11 +50,11 @@ const services = [
     label: "Shop & Services",
     content: {
       badge: "Shop & Services",
-      title: "Sell online. Take bookings. Grow revenue.",
+      title: "A complete platform for commerce and bookings.",
       description:
-        "A full multi-page website with an online store or booking system built in. Ideal for product-based businesses and service providers ready to scale. Stripe payments, inventory management, and a design your customers will love.",
-      buttonText: "Book a Free Call",
-      imageSrc: "https://shadcnblocks.com/images/block/placeholder-dark-2.svg",
+        "A multi-page website integrating an online store or booking system, built to support business growth. Includes secure payment processing, inventory or availability management, and a design tailored to the brand with a smooth customer journey from first visit to conversion.",
+      buttonText: "Get a Quote",
+      imageSrc: "/services/shop-and-services.svg",
       imageAlt: "Shop & Services Package",
     },
   },
@@ -58,11 +64,11 @@ const services = [
     label: "Monthly Care Plan",
     content: {
       badge: "Monthly Care Plan",
-      title: "Your site. Maintained, updated, protected.",
+      title: "Ongoing management, support, and performance.",
       description:
-        "We handle hosting, security, performance, and content updates so you never have to think about it. Priority support, monthly check-ins, and a partner who keeps your website growing — month after month.",
-      buttonText: "Book a Free Call",
-      imageSrc: "https://shadcnblocks.com/images/block/placeholder-dark-3.svg",
+        "A retained service covering hosting, security monitoring, performance optimisation, and content updates. Designed for businesses that want their website actively maintained rather than left static — with priority support and regular reviews included as standard.",
+      buttonText: "Get a Quote",
+      imageSrc: "/services/monthly-care-plan.svg",
       imageAlt: "Monthly Care Plan",
     },
   },
@@ -70,40 +76,34 @@ const services = [
 
 const testimonials = [
   {
-    text: "AlignedFlow Systems zrobiło stronę dla mojego studia jogi w dwa tygodnie. Ceny były jasne od początku, zero niespodzianek. Już miesiąc po premierze mam 30% więcej rezerwacji online.",
-    image: "https://randomuser.me/api/portraits/women/12.jpg",
-    name: "Karolina Wiśniewska",
-    role: "Właścicielka, Yoga Flow Studio · Leeds",
-  },
-  {
-    text: "I was blown away by how smooth the whole process was. They listened, delivered on time, and the site looks exactly how I imagined. My clients always comment on it.",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    text: "The whole process was straightforward from start to finish. Knew exactly what was happening at every stage, the site was ready ahead of schedule, and clients notice it immediately.",
     name: "Emily Clarke",
-    role: "Holistic Therapist · Manchester",
+    role: "Holistic Therapist, London",
   },
   {
-    text: "Polecam z całego serca. Profesjonalne podejście, piękny projekt i wszystko wyjaśnione po polsku. Moja firma wygląda teraz jak z innej ligi.",
-    image: "https://randomuser.me/api/portraits/men/33.jpg",
-    name: "Tomasz Kowalski",
-    role: "Trener personalny · Warszawa",
-  },
-  {
-    text: "Switched from a Wix template to a custom AlignedFlow Systems site and the difference is night and day. Page speed went from 52 to 94. Bookings have doubled.",
-    image: "https://randomuser.me/api/portraits/women/22.jpg",
+    text: "Moved away from a Wix template and the difference is immediately obvious. Load times are down, the design actually represents the business, and enquiries have picked up noticeably.",
     name: "Megan Hughes",
-    role: "Yoga & Breathwork Teacher · Bristol",
+    role: "Yoga & Breathwork Teacher",
   },
   {
-    text: "Nareszcie studio, które rozumie specyfikę małego biznesu. Strona gotowa na czas, w budżecie, i naprawdę mi się podoba. Klienci w końcu mogą mnie znaleźć w Google.",
-    image: "https://randomuser.me/api/portraits/women/55.jpg",
-    name: "Agnieszka Nowak",
-    role: "Coach i mentorka · Kraków",
+    text: "Potrzebowałem strony, która wygląda profesjonalnie, ale nie kosztuje fortunę. Efekt końcowy przeszedł moje oczekiwania — prosta współpraca, szybka realizacja.",
+    name: "Tomasz Wiśniewski",
+    role: "Trener personalny, Warszawa",
   },
   {
-    text: "The care plan is worth every penny. I don't have to think about updates or security — it just works. AlignedFlow Systems feel like a proper partner, not just a supplier.",
-    image: "https://randomuser.me/api/portraits/men/14.jpg",
+    text: "The care plan takes one thing completely off the plate. Updates happen without having to chase anyone, and knowing security is handled in the background is genuinely reassuring.",
     name: "David Park",
-    role: "Owner, Greenfield Deli · Edinburgh",
+    role: "Owner, Greenfield Deli",
+  },
+  {
+    text: "Needed a site that handled bookings and a product shop together. The result was clean, loaded fast, and there were no issues on launch day — exactly what was promised.",
+    name: "Karolina Jabłońska",
+    role: "Założycielka, Studio Równowaga",
+  },
+  {
+    text: "No upselling, no jargon, no inflated quotes. Just a solid brief, a fair price, and a finished site that does exactly what it needs to do.",
+    name: "James Thornton",
+    role: "Personal Trainer & Coach",
   },
 ]
 
@@ -115,32 +115,43 @@ const steps = [
   {
     icon: <MessageCircle className="h-8 w-8 text-cyan-600" />,
     step: "01",
-    title: "Free Discovery Call",
+    title: "Initial Enquiry",
     description:
-      "We start with a relaxed conversation about your business, your goals, and what's not working right now. No pitch, no pressure — just listening.",
+      "Share a brief overview of the project via the contact form. A considered response with recommended next steps follows within 24 hours.",
   },
   {
     icon: <Lightbulb className="h-8 w-8 text-cyan-600" />,
     step: "02",
-    title: "Tailored Proposal",
+    title: "Proposal & Scope",
     description:
-      "Within 48 hours you receive a clear proposal: scope, timeline, and a fixed price. No hourly billing, no surprise invoices — ever.",
+      "A detailed proposal is prepared outlining the project scope, deliverables, and timeline, providing a clear foundation before work begins.",
   },
   {
     icon: <PenTool className="h-8 w-8 text-cyan-600" />,
     step: "03",
-    title: "Design & Build",
+    title: "Design & Development",
     description:
-      "We design first, then build. You approve every stage before we move forward. The result is a site that genuinely feels like yours.",
+      "The site is designed and developed to specification with purposeful visual direction and clean, performant code built for long-term reliability.",
   },
   {
     icon: <Rocket className="h-8 w-8 text-cyan-600" />,
     step: "04",
-    title: "Launch & Grow",
+    title: "Launch & Handover",
     description:
-      "We handle the technical launch and hand over a site you understand. Ongoing support is always available — we don't disappear after go-live.",
+      "The site is deployed, thoroughly tested, and handed over with full documentation. Ongoing support remains available beyond the launch date.",
   },
 ]
+
+// ── Shared props ──────────────────────────────────────────────────────────────
+
+const glowProps = {
+  spread: 40,
+  glow: true as const,
+  disabled: false,
+  proximity: 64,
+  inactiveZone: 0.01,
+  borderWidth: 2,
+} as const
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -157,35 +168,54 @@ export default function HomePage() {
       </section>
 
       {/* ── BUILT WITH / LOGOS ─────────────────────────────────────────────── */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">
+      <section className="relative pt-2 pb-12 px-4 overflow-hidden bg-black">
+        {/* Top fade — blends into hero */}
+        <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#030303] to-transparent pointer-events-none z-20" />
+        {/* Bottom fade — blends into Orbiting Skills */}
+        <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black to-transparent pointer-events-none z-20" />
+        <div className="relative z-10 max-w-4xl mx-auto pt-16">
+          <div className="text-center mb-8">
+            <motion.span
+              className="text-xs font-semibold tracking-widest text-cyan-400 uppercase"
+              initial={{ opacity: 0, y: -16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.8 }}
+            >
               Built With
-            </span>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold">
-              Modern tools. Not WordPress templates.
-            </h2>
+            </motion.span>
+            <motion.h2
+              className="mt-3 text-2xl md:text-3xl font-bold text-white"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.8 }}
+            >
+              Modern stack. Production-grade results.
+            </motion.h2>
+            <motion.p
+              className="mt-3 text-sm text-gray-400 max-w-lg mx-auto"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.8 }}
+            >
+              The same tools used by the world's fastest-growing companies —
+              so your site is built to perform, scale, and last.
+            </motion.p>
           </div>
-          <LogoCloud />
         </div>
+        <LogoCloud className="relative z-10" />
       </section>
 
+
       {/* ── ORBITING SKILLS ─────────────────────────────────────────────── */}
-      <section className="py-24 px-4 bg-gray-950">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-semibold tracking-widest text-cyan-500 uppercase">Tech Stack</span>
-            <h2 className="mt-3 text-3xl md:text-4xl font-bold text-white">
-              The technologies behind your website.
-            </h2>
-            <p className="mt-4 text-gray-400 max-w-xl mx-auto text-sm">
-              Hover over any icon to explore the tools we use to build fast, modern, and scalable websites.
-            </p>
-          </div>
+      <section className="relative py-24 px-4 bg-black overflow-hidden">
+        <div className="relative z-10 max-w-6xl mx-auto -mt-10">
           <OrbitingSkills />
         </div>
       </section>
+
 
       {/* ── ABOUT ──────────────────────────────────────────────────────────── */}
       <section id="about" className="relative py-24 px-4 bg-secondary/30">
@@ -198,12 +228,12 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="relative rounded-2xl border border-border bg-background p-8 shadow-sm"
           >
-            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
+            <GlowingEffect {...glowProps} />
             <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">
-              About Us
+              About
             </span>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-snug">
-              Built by someone who's been the small business owner wondering where to start
+              Websites built with purpose, precision, and a long-term perspective
             </h2>
           </motion.div>
           <motion.div
@@ -213,30 +243,41 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="relative rounded-2xl border border-border bg-background p-8 shadow-sm"
           >
-            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
+            <GlowingEffect {...glowProps} />
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              AlignedFlow Systems was founded to give wellness creators, coaches, and small businesses
-              access to the same quality of web design that bigger brands take for granted —
-              at prices that make sense. We work across the UK and Poland, in English and Polish,
-              and we treat every project like it's our own business on the line.
-              No templates. No vague timelines. No inflated agency fees.
+              AlignedFlow Systems is a boutique web design studio focused on delivering
+              thoughtful, high-performance websites for businesses and creators who take
+              their online presence seriously. Every project is approached with a clear
+              process, transparent communication, and attention to the details that make
+              the difference between a website that exists and one that works.
             </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-7 py-3 text-sm font-semibold text-white bg-cyan-600 rounded-full hover:bg-cyan-700 transition-colors"
-            >
-              Work With Us
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="/team"
+                className="inline-flex items-center justify-center px-7 py-3 text-sm font-semibold text-white bg-cyan-600 rounded-full hover:bg-cyan-700 transition-colors"
+              >
+                Meet the Team
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center px-7 py-3 text-sm font-semibold text-white border border-white/20 rounded-full hover:border-cyan-400 hover:text-cyan-400 transition-colors"
+              >
+                Contact Us
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
 
+      {/* ── STATS ──────────────────────────────────────────────────────────── */}
+      <StatsCounter />
+
       {/* ── SERVICES ───────────────────────────────────────────────────────── */}
       <section id="services">
         <Feature108
-          badge="Our Packages"
-          heading="Three clear packages. No surprises."
-          description="Choose the package that fits where your business is right now. Every package includes a dedicated point of contact, clear timelines, and no hidden costs."
+          badge="Services"
+          heading="Tailored solutions for every stage of growth."
+          description="Each service is scoped to deliver measurable value — whether launching a new presence, expanding an existing one, or ensuring long-term performance and reliability."
           tabs={services}
         />
       </section>
@@ -246,14 +287,13 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">
-              Our Process
+              The Process
             </span>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold">
-              From first call to live website — here's exactly how it works.
+              A structured process designed for clarity and efficiency.
             </h2>
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              Four straightforward steps. No ambiguity, no chasing for updates,
-              no nasty surprises on the final invoice.
+              Every project follows a defined workflow — from initial enquiry through to a successful launch — with full visibility and regular communication at each stage.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -266,14 +306,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="relative rounded-2xl border-[0.75px] border-border p-2"
               >
-                <GlowingEffect
-                  spread={40}
-                  glow={true}
-                  disabled={false}
-                  proximity={64}
-                  inactiveZone={0.01}
-                  borderWidth={2}
-                />
+                <GlowingEffect {...glowProps} />
                 <div className="relative flex flex-col items-start bg-background rounded-xl p-6 shadow-sm h-full">
                   <div className="mb-4">{s.icon}</div>
                   <span className="text-xs font-bold text-muted-foreground tracking-widest mb-2">
@@ -291,7 +324,9 @@ export default function HomePage() {
       </section>
 
       {/* ── TESTIMONIALS ───────────────────────────────────────────────────── */}
-      <section className="py-24 px-4 bg-background">
+      <section className="relative py-24 px-4 bg-background overflow-hidden">
+        <div className="pointer-events-none absolute -top-40 left-0 w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-40 right-0 w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-3xl" />
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -304,10 +339,10 @@ export default function HomePage() {
               Client Testimonials
             </span>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold">
-              What our clients say
+              What clients say
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Real people. Real businesses. Real results — in the UK and Poland.
+              Real people. Real businesses. Real results.
             </p>
           </motion.div>
 
@@ -327,9 +362,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── FAQ ────────────────────────────────────────────────────────────── */}
+      <FAQSection />
+
       {/* ── CTA BANNER ─────────────────────────────────────────────────────── */}
-      <section id="contact" className="py-24 px-4 bg-cyan-700">
-        <div className="max-w-3xl mx-auto text-center">
+      <section id="contact" className="relative py-40 px-4 bg-cyan-700 overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
+        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
+        <div className="relative z-20 max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -340,12 +380,12 @@ export default function HomePage() {
               Ready to build something you're proud of?
             </h2>
             <p className="mt-5 text-cyan-100 text-lg max-w-xl mx-auto">
-              Book a free 30-minute call and let's figure out what your business actually needs.
-              No commitment. No hard sell. Gotowi? Let's talk.
+              Fill in the contact form and expect a reply within 24 hours.
+              No commitment. No hard sell.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:hello@alignedflowsystems.com"
+                href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-cyan-600 bg-white rounded-full hover:bg-cyan-50 transition-colors shadow-lg"
               >
                 Get a Quote
@@ -354,7 +394,7 @@ export default function HomePage() {
                 href="#services"
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white border-2 border-white/60 rounded-full hover:bg-cyan-400/20 hover:border-cyan-400 hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.35)] transition-all duration-300"
               >
-                See Our Packages
+                See Packages
               </a>
             </div>
           </motion.div>
@@ -362,81 +402,8 @@ export default function HomePage() {
       </section>
 
       {/* ── FOOTER ─────────────────────────────────────────────────────────── */}
-      <footer className="bg-gray-950 text-gray-400 py-14 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-            {/* Brand */}
-            <div className="md:col-span-2">
-              <span className="text-white font-bold text-xl tracking-tight">
-                AlignedFlow Systems
-              </span>
-              <p className="mt-3 text-sm leading-relaxed max-w-sm">
-                Web design for wellness creators, coaches, and small businesses
-                across the UK and Poland. Clear design. Clear pricing. No surprises.
-              </p>
-              <p className="mt-3 text-xs text-gray-500">🇬🇧 United Kingdom · 🇵🇱 Polska</p>
-            </div>
+      <SiteFooter />
 
-            {/* Services */}
-            <div>
-              <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-4">
-                Packages
-              </h4>
-              <ul className="space-y-2 text-sm">
-                {[
-                  "Landing Page",
-                  "Shop & Services",
-                  "Monthly Care Plan",
-                ].map((s) => (
-                  <li key={s}>
-                    <a href="#services" className="hover:text-white transition-colors">
-                      {s}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-4">
-                Company
-              </h4>
-              <ul className="space-y-2 text-sm">
-                {[
-                  { label: "Home", href: "#hero" },
-                  { label: "About Us", href: "#about" },
-                  { label: "Packages", href: "#services" },
-                  { label: "Contact", href: "#contact" },
-                ].map((l) => (
-                  <li key={l.label}>
-                    <a href={l.href} className="hover:text-white transition-colors">
-                      {l.label}
-                    </a>
-                  </li>
-                ))}
-                <li>
-                  <a href="mailto:hello@klarstudio.co.uk" className="hover:text-white transition-colors">
-                    hello@klarstudio.co.uk
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
-            <p>&copy; {new Date().getFullYear()} AlignedFlow Systems. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Terms of Service
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </main>
   )
 }
