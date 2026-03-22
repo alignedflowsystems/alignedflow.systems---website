@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "motion/react";
 import { Mail, Globe, Send, CheckCircle, Loader2 } from "lucide-react";
@@ -35,7 +35,7 @@ const EMPTY_FIELDS: Fields = {
 const FORMSPREE_ENDPOINT =
   process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "YOUR_FORMSPREE_ENDPOINT";
 
-export const Contact2 = () => {
+const ContactFormInner = () => {
   const searchParams = useSearchParams();
   const [fields, setFields] = useState<Fields>(EMPTY_FIELDS);
   const [honeypot, setHoneypot] = useState("");
@@ -297,3 +297,9 @@ export const Contact2 = () => {
     </section>
   );
 };
+
+export const Contact2 = () => (
+  <Suspense fallback={<div />}>
+    <ContactFormInner />
+  </Suspense>
+);
