@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { motion } from "motion/react"
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 
 interface TabContent {
@@ -31,7 +31,7 @@ interface Feature108Props {
   tabs?: Tab[]
 }
 
-const Feature108 = ({
+const Feature108Inner = ({
   badge = "Our Services",
   heading = "Everything You Need to Grow Online",
   description = "From design to launch, complete digital solutions tailored to your business.",
@@ -174,5 +174,11 @@ const Feature108 = ({
     </section>
   )
 }
+
+const Feature108 = (props: Feature108Props) => (
+  <Suspense fallback={<div />}>
+    <Feature108Inner {...props} />
+  </Suspense>
+)
 
 export { Feature108 }
