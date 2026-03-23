@@ -31,7 +31,7 @@ export const SparklesCore = (props: ParticlesProps) => {
         setInit(true);
       })
       .catch((err) => {
-        console.error("Failed to initialise particles engine:", err);
+        console.warn("Failed to initialise particles engine:", err);
         setInit(true);
       });
   }, []);

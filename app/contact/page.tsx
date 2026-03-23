@@ -6,6 +6,11 @@ import { SiteFooter } from "@/components/ui/site-footer"
 export const metadata = {
   title: "Contact | AlignedFlow Systems",
   description: "Get in touch with AlignedFlow Systems. Share your project details and expect a reply within 24 hours.",
+  alternates: { canonical: "https://www.alignedflowsystems.com/contact" },
+  openGraph: {
+    title: "Contact | AlignedFlow Systems",
+    description: "Get in touch with AlignedFlow Systems. Share your project details and expect a reply within 24 hours.",
+  },
 }
 
 export default function ContactPage() {

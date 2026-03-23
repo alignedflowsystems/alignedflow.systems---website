@@ -1,15 +1,9 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React from "react"
 import { motion } from "motion/react"
 import { Zap, BarChart2, CheckSquare, Headphones } from "lucide-react"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void
-  }
-}
 
 const whyCards = [
   {
@@ -39,10 +33,6 @@ const whyCards = [
 ]
 
 export function TeamPage() {
-  useEffect(() => {
-    window.gtag?.("event", "team_page_view", { page_title: "Team" })
-  }, [])
-
   return (
     <>
       {/* ── SECTION 1: HERO ──────────────────────────────────────────────── */}

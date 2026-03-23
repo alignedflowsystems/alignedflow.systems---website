@@ -46,7 +46,7 @@ const Feature108Inner = ({
     if (tabParam && tabs.find((t) => t.value === tabParam)) {
       setActive(tabParam)
     }
-  }, [searchParams])
+  }, [searchParams, tabs])
 
   const activeIndex = tabs.findIndex((t) => t.value === active)
 

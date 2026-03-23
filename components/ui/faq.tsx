@@ -36,13 +36,15 @@ const faqs = [
   },
 ]
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
+function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
   const [open, setOpen] = useState(false)
+  const answerId = `faq-answer-${index}`
   return (
     <div className="border-b border-white/10 last:border-0">
       <button
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
+        aria-controls={answerId}
         className="w-full flex items-center justify-between gap-4 py-5 text-left text-white font-medium text-base md:text-lg hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:text-cyan-400"
       >
         <span>{question}</span>
@@ -56,6 +58,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
+            id={answerId}
             key="answer"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -90,7 +93,7 @@ export function FAQSection() {
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 px-6 md:px-10">
           {faqs.map((faq, i) => (
-            <FAQItem key={i} question={faq.question} answer={faq.answer} />
+            <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
           ))}
         </div>
       </div>

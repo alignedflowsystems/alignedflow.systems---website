@@ -73,15 +73,15 @@ export const PremiumHero = () => {
       {/* Content */}
       <div className="relative z-20 flex h-screen w-full items-center justify-center px-6 text-center">
         <div className="container mx-auto flex flex-col items-center gap-12 text-center">
-          <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter font-regular">
+          <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter font-normal">
             <span className="text-white">Building for you</span>
             <span className="relative flex w-full justify-center md:pb-4 md:pt-1">
               &nbsp;
               {aiTitles.map((title, index) => (
                 <motion.span
                   key={index}
-                  className="absolute font-semibold text-white dark:text-gray-300"
-                  initial={{ opacity: 0, y: "-100" }}
+                  className="absolute font-semibold text-white"
+                  initial={{ opacity: 0, y: -100 }}
                   transition={{ type: "spring", stiffness: 50 }}
                   animate={
                     titleNumber === index

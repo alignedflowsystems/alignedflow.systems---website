@@ -4,6 +4,12 @@ import { SiteFooter } from "@/components/ui/site-footer"
 export const metadata = {
   title: "Cookie Policy | AlignedFlow Systems",
   description: "Cookie Policy for AlignedFlow Systems — how cookies and similar technologies are used on this website.",
+  alternates: { canonical: "https://www.alignedflowsystems.com/cookie-policy" },
+  robots: { index: false },
+  openGraph: {
+    title: "Cookie Policy | AlignedFlow Systems",
+    description: "Cookie Policy for AlignedFlow Systems — how cookies and similar technologies are used on this website.",
+  },
 }
 
 export default function CookiePolicyPage() {

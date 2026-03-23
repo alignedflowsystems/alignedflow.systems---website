@@ -15,11 +15,6 @@ export default function CookieBanner() {
 
   function handleAccept() {
     localStorage.setItem("cookie-consent", "accepted")
-    try {
-      window.gtag?.("consent", "update", { analytics_storage: "granted" })
-    } catch {
-      // gtag may be blocked by an ad blocker or CSP — fail silently
-    }
     setVisible(false)
   }
 

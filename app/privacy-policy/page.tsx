@@ -4,6 +4,12 @@ import { SiteFooter } from "@/components/ui/site-footer"
 export const metadata = {
   title: "Privacy Policy | AlignedFlow Systems",
   description: "Privacy Policy for AlignedFlow Systems — how personal data is collected, used, and protected.",
+  alternates: { canonical: "https://www.alignedflowsystems.com/privacy-policy" },
+  robots: { index: false },
+  openGraph: {
+    title: "Privacy Policy | AlignedFlow Systems",
+    description: "Privacy Policy for AlignedFlow Systems — how personal data is collected, used, and protected.",
+  },
 }
 
 export default function PrivacyPolicyPage() {
@@ -139,7 +145,7 @@ export default function PrivacyPolicyPage() {
             <ul className="list-disc pl-5 space-y-2 text-sm">
               <li>
                 <strong className="text-foreground">Service providers</strong> — trusted tools and
-                platforms used to operate the business (e.g. hosting on Vercel, email delivery). All are
+                platforms used to operate the business (e.g. hosting on Cloudflare Pages, email delivery). All are
                 bound by appropriate data processing agreements.
               </li>
               <li>

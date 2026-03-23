@@ -196,7 +196,7 @@ export default function OrbitingSkills() {
   ];
 
   return (
-    <main className="w-full flex items-center justify-center overflow-hidden">
+    <div className="w-full flex items-center justify-center overflow-hidden">
       <div
         ref={containerRef}
         className="relative w-[calc(100vw-40px)] h-[calc(100vw-40px)] md:w-[450px] md:h-[450px] flex items-center justify-center"
@@ -232,6 +232,6 @@ export default function OrbitingSkills() {
           })}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

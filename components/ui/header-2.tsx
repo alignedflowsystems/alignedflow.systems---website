@@ -90,6 +90,7 @@ export function Header() {
                         <a
                             key={link.href}
                             href={link.href}
+                            aria-current={isActive(link) ? 'page' : undefined}
                             onClick={(e) => {
                                 if (!link.page && pathname === '/') {
                                     e.preventDefault();
@@ -130,6 +131,7 @@ export function Header() {
 
             {/* Mobile menu */}
             <div
+                aria-hidden={!menuOpen}
                 className={cn(
                     'md:hidden overflow-hidden transition-all duration-300 ease-in-out',
                     menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
@@ -140,6 +142,7 @@ export function Header() {
                         <a
                             key={link.href}
                             href={link.href}
+                            aria-current={isActive(link) ? 'page' : undefined}
                             onClick={(e) => {
                                 if (!link.page && pathname === '/') {
                                     e.preventDefault();
