@@ -26,6 +26,7 @@ import OrbitingSkills from "@/components/ui/orbiting-skills"
 import { StatsCounter } from "@/components/StatsCounter"
 import { SiteFooter } from "@/components/ui/site-footer"
 import { FAQSection } from "@/components/ui/faq"
+import { PortfolioGrid } from "@/components/ui/portfolio-grid"
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -328,6 +329,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── PORTFOLIO ──────────────────────────────────────────────────────── */}
+      <PortfolioGrid />
 
       {/* ── TESTIMONIALS ───────────────────────────────────────────────────── */}
       <section className="relative py-24 px-4 bg-background overflow-hidden">
