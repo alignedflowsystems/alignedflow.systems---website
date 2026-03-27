@@ -6,6 +6,12 @@ export type Testimonial = {
   text: string
   name: string
   role: string
+  country?: "gb" | "pl"
+}
+
+const countryLabel: Record<"gb" | "pl", { flag: string; label: string }> = {
+  gb: { flag: "🇬🇧", label: "UK client" },
+  pl: { flag: "🇵🇱", label: "Polish client" },
 }
 
 export const TestimonialsColumn = (props: {
@@ -29,7 +35,7 @@ export const TestimonialsColumn = (props: {
       >
         {[...new Array(2).fill(0).map((_, index) => (
           <React.Fragment key={index}>
-            {props.testimonials.map(({ text, name, role }, i) => (
+            {props.testimonials.map(({ text, name, role, country }, i) => (
               <div
                 className="p-6 rounded-2xl border shadow-lg shadow-primary/10 max-w-xs w-full"
                 key={i}
@@ -38,6 +44,12 @@ export const TestimonialsColumn = (props: {
                 <div className="mt-5">
                   <div className="font-medium tracking-tight leading-5">{name}</div>
                   <div className="leading-5 opacity-60 tracking-tight text-sm mt-0.5">{role}</div>
+                  {country && (
+                    <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground/50 tracking-wide">
+                      <span aria-hidden="true">{countryLabel[country].flag}</span>
+                      <span>{countryLabel[country].label}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

@@ -79,31 +79,37 @@ const testimonials = [
     text: "The whole process was straightforward from start to finish. Knew exactly what was happening at every stage, the site was ready ahead of schedule, and clients notice it immediately.",
     name: "Emily Clarke",
     role: "Holistic Therapist, London",
+    country: "gb" as const,
   },
   {
     text: "Moved away from a Wix template and the difference is immediately obvious. Load times are down, the design actually represents the business, and enquiries have picked up noticeably.",
     name: "Megan Hughes",
     role: "Yoga & Breathwork Teacher",
+    country: "gb" as const,
   },
   {
     text: "Potrzebowałem strony, która wygląda profesjonalnie, ale nie kosztuje fortunę. Efekt końcowy przeszedł moje oczekiwania — prosta współpraca, szybka realizacja.",
     name: "Tomasz Wiśniewski",
     role: "Trener personalny, Warszawa",
+    country: "pl" as const,
   },
   {
     text: "The care plan takes one thing completely off the plate. Updates happen without having to chase anyone, and knowing security is handled in the background is genuinely reassuring.",
     name: "David Park",
     role: "Owner, Greenfield Deli",
+    country: "gb" as const,
   },
   {
     text: "Needed a site that handled bookings and a product shop together. The result was clean, loaded fast, and there were no issues on launch day — exactly what was promised.",
     name: "Karolina Jabłońska",
     role: "Założycielka, Studio Równowaga",
+    country: "pl" as const,
   },
   {
     text: "No upselling, no jargon, no inflated quotes. Just a solid brief, a fair price, and a finished site that does exactly what it needs to do.",
     name: "James Thornton",
     role: "Personal Trainer & Coach",
+    country: "gb" as const,
   },
 ]
 
