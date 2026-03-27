@@ -88,9 +88,9 @@ const testimonials = [
     country: "gb" as const,
   },
   {
-    text: "Potrzebowałem strony, która wygląda profesjonalnie, ale nie kosztuje fortunę. Efekt końcowy przeszedł moje oczekiwania — prosta współpraca, szybka realizacja.",
+    text: "Needed a site that looked professional without a premium price tag. The end result exceeded expectations — straightforward to work with, and delivered quickly.",
     name: "Tomasz Wiśniewski",
-    role: "Trener personalny, Warszawa",
+    role: "Personal Trainer, Warsaw",
     country: "pl" as const,
   },
   {
@@ -102,7 +102,7 @@ const testimonials = [
   {
     text: "Needed a site that handled bookings and a product shop together. The result was clean, loaded fast, and there were no issues on launch day — exactly what was promised.",
     name: "Karolina Jabłońska",
-    role: "Założycielka, Studio Równowaga",
+    role: "Founder, Studio Równowaga",
     country: "pl" as const,
   },
   {
