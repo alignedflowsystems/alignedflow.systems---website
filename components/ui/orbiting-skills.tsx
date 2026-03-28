@@ -156,6 +156,7 @@ const CONTENT_DIAMETER = 410;
 export default function OrbitingSkills() {
   const [time, setTime] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [scale, setScale] = useState(1);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -176,8 +177,20 @@ export default function OrbitingSkills() {
     };
   }, []);
 
+  // Pause the rAF loop when the component is scrolled out of view
   useEffect(() => {
-    if (isPaused) return;
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (isPaused || !isVisible) return;
     let animationFrameId: number;
     let lastTime = performance.now();
     const animate = (currentTime: number) => {
@@ -188,7 +201,7 @@ export default function OrbitingSkills() {
     };
     animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
+  }, [isPaused, isVisible]);
 
   const orbitConfigs: Array<{ radius: number; glowColor: GlowColor; delay: number }> = [
     { radius: 100, glowColor: 'cyan',   delay: 0   },

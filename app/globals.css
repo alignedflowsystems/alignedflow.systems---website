@@ -64,10 +64,6 @@
   --radius-full: 9999px;
 }
 
-.dark {
-  --button-ripple-color: oklch(0.985 0 0 / 0.5);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

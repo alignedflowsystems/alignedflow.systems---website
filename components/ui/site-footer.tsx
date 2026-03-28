@@ -1,6 +1,12 @@
 "use client"
 
-import { SparklesCore } from "@/components/ui/sparkles"
+import dynamic from "next/dynamic"
+import Link from "next/link"
+
+const SparklesCore = dynamic(
+  () => import("@/components/ui/sparkles").then((m) => m.SparklesCore),
+  { ssr: false }
+)
 
 export function SiteFooter() {
   return (
@@ -43,9 +49,9 @@ export function SiteFooter() {
                 { label: "Monthly Care Plan", tab: "care-plan" },
               ].map((s) => (
                 <li key={s.tab}>
-                  <a href={`/?tab=${s.tab}#services`} className="hover:text-white transition-colors">
+                  <Link href={`/?tab=${s.tab}#services`} className="hover:text-white transition-colors">
                     {s.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -65,9 +71,9 @@ export function SiteFooter() {
                 { label: "Contact", href: "/contact" },
               ].map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="hover:text-white transition-colors">
+                  <Link href={l.href} className="hover:text-white transition-colors">
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
@@ -82,12 +88,12 @@ export function SiteFooter() {
         <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm">
           <p>&copy; {new Date().getFullYear()} AlignedFlow Systems Limited. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="/privacy-policy" className="hover:text-white transition-colors">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Privacy Policy
-            </a>
-            <a href="/cookie-policy" className="hover:text-white transition-colors">
+            </Link>
+            <Link href="/cookie-policy" className="hover:text-white transition-colors">
               Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

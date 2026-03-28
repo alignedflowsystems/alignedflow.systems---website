@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import Link from "next/link"
 import { motion } from "motion/react"
 import { Zap, BarChart2, CheckSquare, Headphones } from "lucide-react"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
@@ -118,12 +119,12 @@ export function TeamPage() {
 
               {/* Links */}
               <div className="mt-8">
-                <a
+                <Link
                   href="/contact"
                   className="inline-flex items-center justify-center px-7 py-3 text-sm font-semibold text-white bg-cyan-600 rounded-full hover:bg-cyan-700 transition-colors"
                 >
                   Get a Quote
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -202,18 +203,18 @@ export function TeamPage() {
               Fill in the contact form and expect a reply within 24 hours. No commitment, no hard sell.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-cyan-600 bg-white rounded-full hover:bg-cyan-50 transition-colors shadow-lg"
               >
                 Get a Quote
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/#services"
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white border-2 border-white/60 rounded-full hover:bg-cyan-400/20 hover:border-cyan-400 hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.35)] transition-all duration-300"
               >
                 See Packages
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

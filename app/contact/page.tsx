@@ -1,4 +1,5 @@
 import { Suspense } from "react"
+import { Loader2 } from "lucide-react"
 import { Header } from "@/components/ui/header-2"
 import { Contact2 } from "@/components/ui/contact-2"
 import { SiteFooter } from "@/components/ui/site-footer"
@@ -18,7 +19,11 @@ export default function ContactPage() {
     <main className="min-h-screen bg-background text-foreground">
       <Header />
       <div className="pt-24">
-        <Suspense fallback={<div />}>
+        <Suspense fallback={
+          <div className="min-h-[400px] flex items-center justify-center">
+            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+          </div>
+        }>
           <Contact2 />
         </Suspense>
       </div>

@@ -3,6 +3,7 @@ import React from "react"
 import { motion } from "motion/react"
 
 export type Testimonial = {
+  id?: string
   text: string
   name: string
   role: string
@@ -35,10 +36,10 @@ export const TestimonialsColumn = (props: {
       >
         {[...new Array(2).fill(0).map((_, index) => (
           <React.Fragment key={index}>
-            {props.testimonials.map(({ text, name, role, country }, i) => (
+            {props.testimonials.map(({ id, text, name, role, country }) => (
               <div
                 className="p-6 rounded-2xl border shadow-lg shadow-primary/10 max-w-xs w-full"
-                key={i}
+                key={id ?? name}
               >
                 <div className="text-sm leading-relaxed">{text}</div>
                 <div className="mt-5">

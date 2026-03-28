@@ -1,5 +1,8 @@
 "use client"
 
+// TODO: gate analytics loading behind getConsent() === 'accepted'
+// See lib/consent.ts for the getConsent() utility and the GDPR gating pattern.
+
 import { useState, useEffect } from "react"
 import { motion } from "motion/react"
 import Link from "next/link"

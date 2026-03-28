@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { useScroll } from '@/components/ui/use-scroll';
+import { useScroll } from '@/hooks/use-scroll';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { Typewriter } from '@/components/ui/typewriter-text';
 
@@ -19,6 +20,10 @@ export function Header() {
     const pathname = usePathname();
     const [menuOpen, setMenuOpen] = React.useState(false);
     const [activeSection, setActiveSection] = React.useState<string>('hero');
+    // `mounted` is false during SSR and flips to true after hydration.
+    // Used to show static text on the server and start the Typewriter animation client-side.
+    const [mounted, setMounted] = React.useState(false);
+    React.useEffect(() => { setMounted(true); }, []);
 
     React.useEffect(() => {
         if (pathname !== '/') return;
@@ -66,28 +71,43 @@ export function Header() {
             <div className="max-w-6xl mx-auto px-4 grid grid-cols-3 items-center">
                 {/* Left: Logo */}
                 <div className="flex items-center">
-                    <a
+                    <Link
                         href="/"
                         className="flex flex-col leading-tight text-cyan-400 tracking-tight font-bold"
                     >
+                        {/* The full text is rendered immediately on the server (and before JS runs)
+                            to avoid layout shift (CLS). After hydration, the Typewriter component
+                            takes over and replays the animation as progressive enhancement. */}
                         <span className="text-lg">
                             <span className="text-cyan-400">
-                                <Typewriter text="Aligned" speed={80} cursor="|" loop={false} />
+                                {mounted ? (
+                                    <Typewriter text="Aligned" speed={80} cursor="|" loop={false} />
+                                ) : (
+                                    <span>Aligned</span>
+                                )}
                             </span>
                             <span className="text-white">
-                                <Typewriter text="Flow" speed={80} cursor="|" loop={false} startDelay={560} />
+                                {mounted ? (
+                                    <Typewriter text="Flow" speed={80} cursor="|" loop={false} startDelay={560} />
+                                ) : (
+                                    <span>Flow</span>
+                                )}
                             </span>
                         </span>
                         <span className="text-sm font-semibold text-cyan-400/80 self-center">
-                            <Typewriter text="Systems" speed={80} cursor="|" loop={false} startDelay={880} />
+                            {mounted ? (
+                                <Typewriter text="Systems" speed={80} cursor="|" loop={false} startDelay={880} />
+                            ) : (
+                                <span>Systems</span>
+                            )}
                         </span>
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Center: Nav links — always pinned to middle column */}
                 <nav className="hidden md:flex items-center justify-center gap-6">
                     {navLinks.map((link) => (
-                        <a
+                        <Link
                             key={link.href}
                             href={link.href}
                             aria-current={isActive(link) ? 'page' : undefined}
@@ -105,7 +125,7 @@ export function Header() {
                             )}
                         >
                             {link.label}
-                        </a>
+                        </Link>
                     ))}
                 </nav>
                 {/* Mobile: empty center */}
@@ -113,12 +133,12 @@ export function Header() {
 
                 {/* Right: CTA / mobile toggle */}
                 <div className="flex items-center justify-end">
-                    <a
+                    <Link
                         href="/contact"
                         className="hidden md:inline-flex bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
                     >
                         Get a Quote
-                    </a>
+                    </Link>
                     <button
                         className="md:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/10 transition-colors text-white"
                         onClick={() => setMenuOpen((v) => !v)}
@@ -139,7 +159,7 @@ export function Header() {
             >
                 <nav className="flex flex-col gap-1 px-4 pt-2 pb-4 bg-slate-900/98 backdrop-blur-md border-t border-white/10">
                     {navLinks.map((link) => (
-                        <a
+                        <Link
                             key={link.href}
                             href={link.href}
                             aria-current={isActive(link) ? 'page' : undefined}
@@ -158,14 +178,14 @@ export function Header() {
                             )}
                         >
                             {link.label}
-                        </a>
+                        </Link>
                     ))}
-                    <a
+                    <Link
                         href="/contact"
                         className="mt-2 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors text-center"
                     >
                         Get a Quote
-                    </a>
+                    </Link>
                 </nav>
             </div>
         </header>

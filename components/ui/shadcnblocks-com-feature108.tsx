@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+import Link from "next/link"
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -7,6 +9,13 @@ import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { motion } from "motion/react"
 import React, { useState, useRef, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
+import { Loader2 } from "lucide-react"
+
+const Feature108Fallback = () => (
+  <div className="min-h-[400px] flex items-center justify-center">
+    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+  </div>
+);
 
 interface TabContent {
   badge: string
@@ -139,14 +148,18 @@ const Feature108Inner = ({
                       <h3 className="text-3xl font-semibold lg:text-5xl">{tab.content.title}</h3>
                       <p className="text-muted-foreground lg:text-lg">{tab.content.description}</p>
                       <Button className="mt-2.5 w-fit gap-2 bg-cyan-600 hover:bg-cyan-700 text-white" size="lg" asChild>
-                        <a href={`/contact?package=${tab.value}`}>Get a Quote</a>
+                        <Link href={`/contact?package=${tab.value}`}>Get a Quote</Link>
                       </Button>
                     </div>
-                    <img
-                      src={tab.content.imageSrc}
-                      alt={tab.content.imageAlt}
-                      className="rounded-xl w-full"
-                    />
+                    <div className="relative w-full aspect-video">
+                      <Image
+                        src={tab.content.imageSrc}
+                        alt={tab.content.imageAlt}
+                        fill
+                        className="rounded-xl object-contain"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
                   </motion.div>
                 )
               })}
@@ -176,7 +189,7 @@ const Feature108Inner = ({
 }
 
 const Feature108 = (props: Feature108Props) => (
-  <Suspense fallback={<div />}>
+  <Suspense fallback={<Feature108Fallback />}>
     <Feature108Inner {...props} />
   </Suspense>
 )

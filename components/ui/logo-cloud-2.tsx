@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
 
@@ -11,14 +12,14 @@ type Logo = {
 type LogoCloudProps = React.ComponentProps<"div">
 
 const logos: Logo[] = [
-  { src: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg", alt: "Next.js" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg", alt: "React" },
-  { src: "https://cdn.jsdelivr.net/gh/remojansen/logo.ts@master/ts.svg", alt: "TypeScript" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg", alt: "Tailwind CSS" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg", alt: "Figma" },
-  { src: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg", alt: "Vercel" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg", alt: "Stripe" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg", alt: "WordPress" },
+  { src: "/logos/nextjs.svg", alt: "Next.js" },
+  { src: "/logos/react.svg", alt: "React" },
+  { src: "/logos/typescript.svg", alt: "TypeScript" },
+  { src: "/logos/tailwindcss.svg", alt: "Tailwind CSS" },
+  { src: "/logos/figma.svg", alt: "Figma" },
+  { src: "/logos/vercel.svg", alt: "Vercel" },
+  { src: "/logos/stripe.svg", alt: "Stripe" },
+  { src: "/logos/wordpress.svg", alt: "WordPress" },
 ]
 
 export function LogoCloud({ className, ...props }: LogoCloudProps) {
@@ -72,11 +73,12 @@ function LogoCard({ logo, className, ...props }: LogoCardProps) {
           transition={{ duration: 0.3 }}
           className="absolute inset-0 rounded-full blur-xl bg-cyan-400/40 -z-10"
         />
-        <img
-          alt={logo.alt}
-          className="pointer-events-none h-7 select-none object-contain brightness-0 invert relative z-10"
+        <Image
           src={logo.src}
-          style={{ maxWidth: 140 }}
+          alt={logo.alt}
+          width={140}
+          height={28}
+          className="pointer-events-none h-7 w-auto select-none object-contain brightness-0 invert relative z-10"
         />
       </motion.div>
 

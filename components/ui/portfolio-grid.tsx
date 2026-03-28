@@ -8,6 +8,8 @@ import { GlowingEffect } from "@/components/ui/glowing-effect"
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 export type PortfolioProject = {
+  /** Stable unique identifier — used as the React list key */
+  id: string
   client: string
   type: string
   description: string
@@ -26,6 +28,7 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    id: "project-monika-walek",
     client: "Monika Walek",
     type: "Landing Page / Personal Brand Website",
     description:
@@ -202,7 +205,7 @@ export function PortfolioGrid() {
         */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {portfolioProjects.map((project, i) => (
-            <PortfolioCard key={project.client} project={project} index={i} />
+            <PortfolioCard key={project.id} project={project} index={i} />
           ))}
         </div>
       </div>

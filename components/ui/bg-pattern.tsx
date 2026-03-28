@@ -32,7 +32,7 @@ const maskClasses: Record<BGMaskType, string> = {
     none: '',
 };
 
-function geBgImage(variant: BGVariantType, fill: string, size: number) {
+function getBgImage(variant: BGVariantType, fill: string, size: number) {
     switch (variant) {
         case 'dots':
             return `radial-gradient(${fill} 1px, transparent 1px)`;
@@ -61,7 +61,7 @@ const BGPattern = ({
     ...props
 }: BGPatternProps) => {
     const bgSize = `${size}px ${size}px`;
-    const backgroundImage = geBgImage(variant, fill, size);
+    const backgroundImage = getBgImage(variant, fill, size);
 
     return (
         <div

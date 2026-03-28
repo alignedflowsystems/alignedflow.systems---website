@@ -4,6 +4,12 @@ import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "motion/react";
 import { Mail, Globe, Send, CheckCircle, Loader2 } from "lucide-react";
+
+const ContactFallback = () => (
+  <div className="min-h-[400px] flex items-center justify-center">
+    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+  </div>
+);
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -32,8 +38,18 @@ const EMPTY_FIELDS: Fields = {
   message: "",
 };
 
+if (
+  process.env.NODE_ENV === "development" &&
+  !process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT
+) {
+  throw new Error(
+    "[contact-2] NEXT_PUBLIC_FORMSPREE_ENDPOINT is not set. " +
+      "Add it to .env.local so the contact form can submit."
+  );
+}
+
 const FORMSPREE_ENDPOINT =
-  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "YOUR_FORMSPREE_ENDPOINT";
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "";
 
 const ContactFormInner = () => {
   const searchParams = useSearchParams();
@@ -299,7 +315,7 @@ const ContactFormInner = () => {
 };
 
 export const Contact2 = () => (
-  <Suspense fallback={<div />}>
+  <Suspense fallback={<ContactFallback />}>
     <ContactFormInner />
   </Suspense>
 );
