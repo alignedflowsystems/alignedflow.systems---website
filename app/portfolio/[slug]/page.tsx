@@ -5,6 +5,10 @@ import { Header } from "@/components/ui/header-2"
 import { SiteFooter } from "@/components/ui/site-footer"
 import { portfolioProjects } from "@/lib/portfolio-data"
 
+// Required for Cloudflare Pages — prevents "Invalid prerender config" warning
+// and ensures RSC prefetch routes are generated correctly alongside the HTML.
+export const dynamic = "force-static"
+
 // ── Per-project narrative copy ────────────────────────────────────────────────
 
 type ProjectNarrative = {

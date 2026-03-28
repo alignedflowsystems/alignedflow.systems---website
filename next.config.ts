@@ -14,8 +14,8 @@ const cspValue = [
   "img-src 'self' data: blob:",
   // Geist is served from /_next/static by next/font — no external font CDN needed
   "font-src 'self'",
-  // Formspree contact form endpoint
-  "connect-src 'self' https://formspree.io",
+  // Formspree contact form + Google PageSpeed Insights (free-audit tool)
+  "connect-src 'self' https://formspree.io https://www.googleapis.com",
   // No iframes
   "frame-src 'none'",
 ].join("; ");
