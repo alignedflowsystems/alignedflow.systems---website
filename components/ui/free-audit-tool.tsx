@@ -125,7 +125,6 @@ export function FreeAuditTool() {
 
     const normalised = normaliseUrl(url)
 
-    // Validate URL shape before sending
     try {
       new URL(normalised)
     } catch {
@@ -133,31 +132,43 @@ export function FreeAuditTool() {
       return
     }
 
+    // Call Google PageSpeed Insights directly from the browser.
+    // PSI is a public API designed for client-side use — no proxy needed.
+    const apiKey = process.env.NEXT_PUBLIC_PAGESPEED_API_KEY
+    const categories = ["performance", "accessibility", "best-practices", "seo"]
+    const categoryParams = categories.map((c) => `category=${c}`).join("&")
+    const psiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(normalised)}&strategy=mobile&${categoryParams}&fields=lighthouseResult.categories${apiKey ? `&key=${apiKey}` : ""}`
+
     try {
-      const res = await fetch(
-        `/api/audit?url=${encodeURIComponent(normalised)}`,
-        { signal: AbortSignal.timeout(30_000) }
-      )
+      const res = await fetch(psiUrl)
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}))
-        setState({
-          status: "error",
-          message: body.error ?? "Could not analyse that URL. Make sure the site is publicly accessible.",
-        })
+        const raw: string = body?.error?.message ?? ""
+        const message = raw.toLowerCase().includes("quota")
+          ? "The audit service is temporarily at capacity. Please try again in a few minutes."
+          : raw.toLowerCase().includes("unable to fetch")
+            ? "Could not reach that website. Make sure it is publicly accessible and try again."
+            : `Could not analyse that URL. Make sure the site is publicly accessible.`
+        setState({ status: "error", message })
         return
       }
 
-      const data: AuditResult = await res.json()
-      setState({ status: "success", data })
-    } catch (err) {
-      const isTimeout = err instanceof Error && err.name === "TimeoutError"
-      setState({
-        status: "error",
-        message: isTimeout
-          ? "The audit timed out — the site may be slow to respond. Try again in a moment."
-          : "Something went wrong. Please try again.",
-      })
+      const psiData = await res.json()
+      const cats = psiData?.lighthouseResult?.categories
+
+      if (!cats) {
+        setState({ status: "error", message: "No data returned. The site may be unreachable." })
+        return
+      }
+
+      const scores = Object.fromEntries(
+        categories.map((cat) => [cat, Math.round((cats[cat]?.score ?? 0) * 100)])
+      ) as Record<Category, number>
+
+      setState({ status: "success", data: { url: normalised, scores, fetchedAt: new Date().toISOString() } })
+    } catch {
+      setState({ status: "error", message: "Something went wrong. Please try again." })
     }
   }
 
