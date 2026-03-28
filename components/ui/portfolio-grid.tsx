@@ -1,46 +1,16 @@
 "use client"
 
 import React from "react"
+import Link from "next/link"
 import Image from "next/image"
 import { motion } from "motion/react"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
+import { portfolioProjects } from "@/lib/portfolio-data"
+import type { PortfolioProject } from "@/lib/portfolio-data"
 
-// ── Types ─────────────────────────────────────────────────────────────────────
-
-export type PortfolioProject = {
-  /** Stable unique identifier — used as the React list key */
-  id: string
-  client: string
-  type: string
-  description: string
-  /** Optional client quote — leave as empty string when not yet available */
-  quote: string
-  /** External link to the live site, or null for visual-only cards */
-  link: string | null
-  images: {
-    desktop: string
-    mobile: string
-  }
-}
-
-// ── Project data ──────────────────────────────────────────────────────────────
-// Add new projects here — each object becomes a card automatically.
-
-export const portfolioProjects: PortfolioProject[] = [
-  {
-    id: "project-monika-walek",
-    client: "Monika Walek",
-    type: "Landing Page / Personal Brand Website",
-    description:
-      "A clean, fast-loading personal brand website designed and developed for a London-based professional. Built with a focus on clear messaging, mobile responsiveness, and conversion.",
-    quote: "",
-    link: null,
-    images: {
-      desktop: "/portfolio/monika-walek-desktop.png",
-      mobile: "/portfolio/monika-walek-mobile.png",
-    },
-  },
-]
+// Re-export so existing imports from this file still resolve
+export type { PortfolioProject }
+export { portfolioProjects }
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
@@ -149,12 +119,30 @@ function PortfolioCard({
             {project.description}
           </p>
 
+          {/* Result metric badge */}
+          {project.result && (
+            <span className="inline-block text-xs font-semibold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full mt-3">
+              ✦ {project.result}
+            </span>
+          )}
+
           {/* Quote — only rendered when populated */}
           {project.quote && (
             <blockquote className="mt-4 pl-3 border-l-2 border-cyan-600 text-sm italic text-muted-foreground">
-              "{project.quote}"
+              &ldquo;{project.quote}&rdquo;
             </blockquote>
           )}
+
+          {/* Case study link */}
+          <div className="mt-auto pt-5">
+            <Link
+              href={`/portfolio/${project.id}`}
+              className="inline-flex items-center gap-1 text-sm font-medium text-cyan-500 hover:text-cyan-400 transition-colors"
+            >
+              View Case Study
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -203,10 +191,24 @@ export function PortfolioGrid() {
           auto-fill is omitted deliberately so cards don't stretch oddly
           when only 1 or 2 exist; explicit responsive cols are cleaner.
         */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {/* Single-card layout: centred with max-width; expands to multi-col when more projects are added */}
+        <div className={`grid gap-8 ${portfolioProjects.length === 1 ? "max-w-2xl mx-auto" : "grid-cols-1 md:grid-cols-2 xl:grid-cols-3"}`}>
           {portfolioProjects.map((project, i) => (
             <PortfolioCard key={project.id} project={project} index={i} />
           ))}
+        </div>
+
+        {/* "Coming soon" nudge — shown while portfolio is growing */}
+        <div className="text-center mt-10">
+          <p className="text-muted-foreground text-sm">
+            More projects coming soon —{" "}
+            <Link
+              href="/free-audit"
+              className="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity"
+            >
+              in the meantime, get a free website audit
+            </Link>
+          </p>
         </div>
       </div>
     </section>
