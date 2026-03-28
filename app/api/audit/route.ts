@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 
+// Cloudflare Pages requires Edge Runtime for all dynamic routes
+export const runtime = "edge"
+
 // Google PageSpeed Insights API — free, no key required for reasonable usage.
 // Optionally set PAGESPEED_API_KEY in .env.local for higher rate limits.
 const PSI_BASE = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
@@ -36,7 +39,8 @@ export async function GET(req: NextRequest) {
 
   try {
     const res = await fetch(psiUrl, {
-      next: { revalidate: 3600 }, // cache results for 1 hour per URL
+      // Note: next.revalidate is not supported on Edge Runtime.
+      // Cloudflare handles caching at the CDN level.
       signal: AbortSignal.timeout(25_000),
     })
 
