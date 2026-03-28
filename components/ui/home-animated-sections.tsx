@@ -254,10 +254,10 @@ export function CTABanner() {
               Get a Quote
             </Link>
             <Link
-              href="#services"
+              href="/estimate"
               className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white border-2 border-white/60 rounded-full hover:bg-cyan-400/20 hover:border-cyan-400 hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.35)] transition-all duration-300"
             >
-              See Packages
+              Get an Estimate
             </Link>
           </div>
         </motion.div>

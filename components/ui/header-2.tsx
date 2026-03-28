@@ -132,7 +132,13 @@ export function Header() {
                 <div className="md:hidden" />
 
                 {/* Right: CTA / mobile toggle */}
-                <div className="flex items-center justify-end">
+                <div className="flex items-center justify-end gap-2">
+                    <Link
+                        href="/estimate"
+                        className="hidden md:inline-flex border border-white/20 hover:border-cyan-400 hover:text-cyan-400 text-white/80 text-sm font-semibold px-4 py-2.5 rounded-full transition-colors"
+                    >
+                        Get Estimate
+                    </Link>
                     <Link
                         href="/contact"
                         className="hidden md:inline-flex bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
@@ -181,8 +187,15 @@ export function Header() {
                         </Link>
                     ))}
                     <Link
+                        href="/estimate"
+                        className="mt-2 border border-white/20 hover:border-cyan-400 hover:text-cyan-400 text-white/80 text-sm font-semibold px-5 py-2.5 rounded-full transition-colors text-center"
+                        onClick={() => setMenuOpen(false)}
+                    >
+                        Get Estimate
+                    </Link>
+                    <Link
                         href="/contact"
-                        className="mt-2 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors text-center"
+                        className="mt-1 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors text-center"
                     >
                         Get a Quote
                     </Link>
