@@ -37,18 +37,22 @@ export async function GET(req: NextRequest) {
   const apiKey = process.env.PAGESPEED_API_KEY
   const psiUrl = `${PSI_BASE}?url=${encodeURIComponent(url)}&strategy=mobile&${psiCategories}${apiKey ? `&key=${apiKey}` : ""}`
 
+  // Manual timeout via Promise.race — AbortSignal.timeout() is not supported
+  // on Cloudflare Edge Runtime
+  const timeout = new Promise<never>((_, reject) =>
+    setTimeout(() => reject(new Error("TIMEOUT")), 25_000)
+  )
+
   try {
-    const res = await fetch(psiUrl, {
-      // Note: next.revalidate is not supported on Edge Runtime.
-      // Cloudflare handles caching at the CDN level.
-      signal: AbortSignal.timeout(25_000),
-    })
+    const res = await Promise.race([
+      fetch(psiUrl),
+      timeout,
+    ]) as Response
 
     if (!res.ok) {
       const body = await res.json().catch(() => ({}))
       const rawMessage: string = body?.error?.message ?? ""
       const rawStatus: number = body?.error?.code ?? res.status
-      // Translate common Google API errors into user-friendly messages
       const message = rawMessage.toLowerCase().includes("quota")
         ? "The audit service is temporarily unavailable due to high demand. Please try again in a few minutes."
         : rawMessage.toLowerCase().includes("unable to fetch")
@@ -77,12 +81,12 @@ export async function GET(req: NextRequest) {
       fetchedAt: new Date().toISOString(),
     })
   } catch (err) {
-    const isTimeout = err instanceof Error && err.name === "TimeoutError"
+    const isTimeout = err instanceof Error && err.message === "TIMEOUT"
     return NextResponse.json(
       {
         error: isTimeout
           ? "The audit timed out. The site may be too slow to analyse right now."
-          : "Failed to contact Google PageSpeed Insights.",
+          : `Failed to contact Google PageSpeed Insights. (${err instanceof Error ? err.message : String(err)})`,
       },
       { status: 502 }
     )
