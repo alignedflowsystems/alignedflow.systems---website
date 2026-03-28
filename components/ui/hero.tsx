@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
 import { ElegantShape } from "@/components/ui/shape-landing-hero";
 
-const aiTitles = ["websites", "online stores", "booking systems", "brand identities", "care plans"];
+const aiTitles = ["more clients", "more bookings", "more sales", "more trust"];
 
 export const PremiumHero = () => {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -74,14 +74,14 @@ export const PremiumHero = () => {
       {/* Content */}
       <div className="relative z-20 flex h-screen w-full items-center justify-center px-6 text-center">
         <div className="container mx-auto flex flex-col items-center gap-12 text-center">
-          <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter font-normal">
-            <span className="text-white">Building for you</span>
+          <h1 className="text-5xl md:text-7xl max-w-3xl tracking-tighter font-normal">
+            <span className="text-white">Websites that make coaches and creators get</span>
             <span className="relative flex w-full justify-center md:pb-4 md:pt-1">
               &nbsp;
               {aiTitles.map((title, index) => (
                 <motion.span
                   key={index}
-                  className="absolute font-semibold text-white"
+                  className="absolute font-semibold text-cyan-400"
                   initial={{ opacity: 0, y: -100 }}
                   transition={{ type: "spring", stiffness: 50 }}
                   animate={
@@ -97,8 +97,7 @@ export const PremiumHero = () => {
           </h1>
 
           <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center mt-8">
-            AlignedFlow Systems builds fast, beautiful websites for businesses and creators
-            who are ready to grow.
+            Fast, conversion-focused sites for wellness professionals — with a clear process and a fixed timeline.
           </p>
 
           <div className="flex flex-row gap-4 flex-wrap justify-center">

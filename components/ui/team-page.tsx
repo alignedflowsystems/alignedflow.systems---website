@@ -3,7 +3,7 @@
 import React from "react"
 import Link from "next/link"
 import { motion } from "motion/react"
-import { Zap, BarChart2, CheckSquare, Headphones } from "lucide-react"
+import { Zap, BarChart2, CheckSquare, Headphones, Linkedin } from "lucide-react"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
 
 const whyCards = [
@@ -117,14 +117,24 @@ export function TeamPage() {
                 smart web technology.
               </p>
 
-              {/* Links */}
-              <div className="mt-8">
+              {/* Social + CTA links */}
+              <div className="mt-8 flex flex-col items-center gap-4">
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center px-7 py-3 text-sm font-semibold text-white bg-cyan-600 rounded-full hover:bg-cyan-700 transition-colors"
                 >
                   Get a Quote
                 </Link>
+                <a
+                  href="https://linkedin.com/in/mateusz-alignedflow"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Mateusz Dobosz on LinkedIn"
+                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-cyan-600 transition-colors"
+                >
+                  <Linkedin className="h-4 w-4" />
+                  LinkedIn
+                </a>
               </div>
             </div>
           </div>

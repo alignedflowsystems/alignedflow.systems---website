@@ -25,21 +25,27 @@ const logos: Logo[] = [
 export function LogoCloud({ className, ...props }: LogoCloudProps) {
   return (
     <div
-      className={cn("relative grid grid-cols-4", className)}
+      className={cn("relative grid grid-cols-2 md:grid-cols-4", className)}
       {...props}
     >
       <div className="-translate-x-1/2 -top-px pointer-events-none absolute left-1/2 w-screen border-t" />
 
       {logos.map((logo, i) => {
-        const isLastRow = i >= 4
-        const isLastCol = (i + 1) % 4 === 0
+        const isLastRow4 = i >= 4
+        const isLastCol4 = (i + 1) % 4 === 0
+        const isLastRow2 = i >= 6
+        const isLastCol2 = (i + 1) % 2 === 0
         return (
           <LogoCard
             key={logo.alt}
             logo={logo}
             className={cn(
-              !isLastCol && "border-r",
-              !isLastRow && "border-b",
+              // md+: 4-col borders
+              !isLastCol4 && "md:border-r",
+              !isLastRow4 && "md:border-b",
+              // mobile: 2-col borders
+              !isLastCol2 && "border-r md:border-r-0",
+              !isLastRow2 && "border-b",
             )}
           />
         )

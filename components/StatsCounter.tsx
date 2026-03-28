@@ -16,17 +16,26 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-interface Stat {
+interface NumericStat {
+  kind: "numeric";
   value: number;
   suffix: string;
   title: string;
 }
 
+interface TextStat {
+  kind: "text";
+  display: string;
+  title: string;
+}
+
+type Stat = NumericStat | TextStat;
+
 const stats: Stat[] = [
-  { value: 5,  suffix: "+", title: "Years Experience"   },
-  { value: 12, suffix: "+", title: "Happy Clients"       },
-  { value: 18, suffix: "+", title: "Projects Delivered"  },
-  { value: 5,  suffix: "★", title: "Five-Star Reviews"   },
+  { kind: "numeric", value: 5,  suffix: "+", title: "Years Experience"  },
+  { kind: "text",    display: "< 3 Week",     title: "Average Delivery" },
+  { kind: "text",    display: "24hr",          title: "Response Guarantee" },
+  { kind: "numeric", value: 5,  suffix: "★", title: "Five-Star Reviews" },
 ];
 
 function formatNumber(n: number): string {
@@ -103,8 +112,14 @@ export function StatsCounter() {
               <dd
                 className={`${cormorant.className} text-6xl md:text-7xl font-semibold leading-none tracking-tight text-white`}
               >
-                <CountUp target={stat.value} duration={2000} trigger={isInView} />
-                <span className="text-white/80">{stat.suffix}</span>
+                {stat.kind === "numeric" ? (
+                  <>
+                    <CountUp target={stat.value} duration={2000} trigger={isInView} />
+                    <span className="text-white/80">{stat.suffix}</span>
+                  </>
+                ) : (
+                  <span>{stat.display}</span>
+                )}
               </dd>
 
               <dt

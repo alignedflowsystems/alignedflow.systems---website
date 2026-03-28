@@ -35,6 +35,7 @@ const services = [
       title: "A focused, high-converting web presence.",
       description:
         "A single, professionally crafted page built around a specific offer or service. Designed for clarity and conversion, this solution is well-suited to coaches, therapists, and independent service providers seeking an impactful online presence with a fast, structured delivery.",
+      startingFrom: "£497",
       buttonText: "Get a Quote",
       imageSrc: "/services/landing-page.svg",
       imageAlt: "Landing Page Package",
@@ -49,6 +50,7 @@ const services = [
       title: "A complete platform for commerce and bookings.",
       description:
         "A multi-page website integrating an online store or booking system, built to support business growth. Includes secure payment processing, inventory or availability management, and a design tailored to the brand with a smooth customer journey from first visit to conversion.",
+      startingFrom: "£1,997",
       buttonText: "Get a Quote",
       imageSrc: "/services/shop-and-services.svg",
       imageAlt: "Shop & Services Package",
@@ -63,6 +65,7 @@ const services = [
       title: "Ongoing management, support, and performance.",
       description:
         "A retained service covering hosting, security monitoring, performance optimisation, and content updates. Designed for businesses that want their website actively maintained rather than left static — with priority support and regular reviews included as standard.",
+      startingFrom: "£97/mo",
       buttonText: "Get a Quote",
       imageSrc: "/services/monthly-care-plan.svg",
       imageAlt: "Monthly Care Plan",

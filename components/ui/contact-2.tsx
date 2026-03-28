@@ -22,11 +22,22 @@ const PACKAGE_OPTIONS = [
   { value: "care-plan", label: "Monthly Care Plan" },
 ] as const;
 
+const BUDGET_OPTIONS = [
+  { value: "", label: "Select your budget range" },
+  { value: "under-500", label: "Under £500" },
+  { value: "500-1000", label: "£500 – £1,000" },
+  { value: "1000-2500", label: "£1,000 – £2,500" },
+  { value: "2500-5000", label: "£2,500 – £5,000" },
+  { value: "5000-plus", label: "£5,000+" },
+  { value: "not-sure", label: "Not sure yet" },
+] as const;
+
 interface Fields {
   firstname: string;
   lastname: string;
   email: string;
   package: string;
+  budgetRange: string;
   message: string;
 }
 
@@ -35,6 +46,7 @@ const EMPTY_FIELDS: Fields = {
   lastname: "",
   email: "",
   package: "",
+  budgetRange: "",
   message: "",
 };
 
@@ -96,6 +108,8 @@ const ContactFormInner = () => {
           ...fields,
           // Map package value to a readable label for the email
           package: PACKAGE_OPTIONS.find((o) => o.value === fields.package)?.label ?? fields.package,
+          // Map budget range value to a readable label for the email
+          budgetRange: BUDGET_OPTIONS.find((o) => o.value === fields.budgetRange)?.label ?? fields.budgetRange,
         }),
       });
 
@@ -267,11 +281,28 @@ const ContactFormInner = () => {
               </div>
 
               <div className="grid w-full gap-1.5">
+                <Label htmlFor="budgetRange">Budget Range</Label>
+                <select
+                  id="budgetRange"
+                  name="budgetRange"
+                  value={fields.budgetRange}
+                  onChange={handleChange}
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-foreground"
+                >
+                  {BUDGET_OPTIONS.map((o) => (
+                    <option key={o.value} value={o.value} disabled={o.value === ""}>
+                      {o.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="grid w-full gap-1.5">
                 <Label htmlFor="message">Tell us more</Label>
                 <Textarea
                   id="message"
                   name="message"
-                  placeholder="A bit about your business, your timeline, and any specific requirements..."
+                  placeholder="Example: I run a yoga studio in London. I need a booking website with an online shop. My budget is around £1,500 and I'd like to launch before September."
                   className="min-h-[140px] resize-none"
                   value={fields.message}
                   onChange={handleChange}

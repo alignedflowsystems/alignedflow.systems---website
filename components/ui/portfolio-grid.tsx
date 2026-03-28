@@ -33,7 +33,7 @@ export const portfolioProjects: PortfolioProject[] = [
     type: "Landing Page / Personal Brand Website",
     description:
       "A clean, fast-loading personal brand website designed and developed for a London-based professional. Built with a focus on clear messaging, mobile responsiveness, and conversion.",
-    quote: "", // TODO: add client quote when available
+    quote: "",
     link: null,
     images: {
       desktop: "/portfolio/monika-walek-desktop.png",

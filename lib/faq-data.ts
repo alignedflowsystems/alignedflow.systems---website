@@ -34,4 +34,19 @@ export const faqItems: FAQItem[] = [
     answer:
       "Just reach out via the contact form. A few questions about the project will follow and next steps will be sent over — no commitment required.",
   },
+  {
+    question: "How much does a website cost?",
+    answer:
+      "Our websites start from £497 for a landing page, £997 for a full business site, and £1,997 for e-commerce. The final price depends on the number of pages, integrations (booking systems, shops), and design complexity. Every package includes hosting setup, mobile optimisation, basic on-page SEO, and a contact form.",
+  },
+  {
+    question: "Do you offer payment plans?",
+    answer:
+      "Yes. We typically work on a 50% upfront, 50% on launch schedule. For larger projects (£2,000+), we're happy to discuss a three-stage payment plan. We accept bank transfer and card payments.",
+  },
+  {
+    question: "What's included in the price?",
+    answer:
+      "Every project includes: custom design and development, mobile and tablet optimisation, basic on-page SEO (meta titles, descriptions, sitemap), a contact form, hosting setup and configuration, Google Analytics integration, and 30 days of post-launch support for bug fixes and minor adjustments.",
+  },
 ]
