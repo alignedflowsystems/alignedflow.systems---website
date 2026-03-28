@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/ui/cookie-banner";
 import { faqItems } from "@/lib/faq-data";
+import { portfolioProjects } from "@/lib/portfolio-data";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -25,6 +26,24 @@ const faqJsonLd = {
     "acceptedAnswer": {
       "@type": "Answer",
       "text": item.answer,
+    },
+  })),
+};
+
+const portfolioJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Portfolio — AlignedFlow Systems",
+  "itemListElement": portfolioProjects.map((project, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "CreativeWork",
+      "name": project.client,
+      "description": project.description,
+      "url": `https://alignedflowsystems.com/portfolio/${project.id}`,
+      "creator": { "@type": "Organization", "name": "AlignedFlow Systems" },
+      "keywords": project.type.split(" / "),
     },
   })),
 };
@@ -83,6 +102,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioJsonLd) }}
         />
       </head>
       <body

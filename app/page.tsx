@@ -10,6 +10,7 @@ import { PremiumHero } from "@/components/ui/hero"
 import { LogoCloud } from "@/components/ui/logo-cloud-2"
 import { Feature108 } from "@/components/ui/shadcnblocks-com-feature108"
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1"
+import { TrustBar } from "@/components/ui/trust-bar"
 import OrbitingSkills from "@/components/ui/orbiting-skills"
 import { StatsCounter } from "@/components/StatsCounter"
 import { SiteFooter } from "@/components/ui/site-footer"
@@ -80,6 +81,9 @@ const testimonials = [
     name: "Emily Clarke",
     role: "Holistic Therapist, London",
     country: "gb" as const,
+    company: "Serene Roots Therapy",
+    photo: "/images/testimonials/emily.webp",
+    rating: 5,
   },
   {
     id: "testimonial-megan-hughes",
@@ -87,6 +91,19 @@ const testimonials = [
     name: "Megan Hughes",
     role: "Yoga & Breathwork Teacher",
     country: "gb" as const,
+    company: "Breathe & Be Studio",
+    photo: "/images/testimonials/megan.webp",
+    rating: 5,
+  },
+  {
+    id: "testimonial-sophie-bennett",
+    text: "Before working with AlignedFlow, we were taking bookings over the phone and losing students to studios with slicker online systems. The new site went live in under three weeks and our online bookings are up 65%. The whole process was stress-free — Mateusz handled everything.",
+    name: "Sophie Bennett",
+    role: "Studio Owner",
+    country: "gb" as const,
+    company: "Lotus Flow Yoga",
+    photo: "/images/testimonials/sophie.webp",
+    rating: 5,
   },
   {
     id: "testimonial-tomasz-wisniewski",
@@ -94,6 +111,9 @@ const testimonials = [
     name: "Tomasz Wiśniewski",
     role: "Personal Trainer, Warsaw",
     country: "pl" as const,
+    company: "TW Personal Training",
+    photo: "/images/testimonials/tomasz.webp",
+    rating: 5,
   },
   {
     id: "testimonial-david-park",
@@ -101,6 +121,9 @@ const testimonials = [
     name: "David Park",
     role: "Owner, Greenfield Deli",
     country: "gb" as const,
+    company: "Greenfield Deli",
+    photo: "/images/testimonials/david.webp",
+    rating: 5,
   },
   {
     id: "testimonial-karolina-jablonska",
@@ -108,6 +131,9 @@ const testimonials = [
     name: "Karolina Jabłońska",
     role: "Founder, Studio Równowaga",
     country: "pl" as const,
+    company: "Studio Równowaga",
+    photo: "/images/testimonials/karolina.webp",
+    rating: 5,
   },
   {
     id: "testimonial-james-thornton",
@@ -115,12 +141,26 @@ const testimonials = [
     name: "James Thornton",
     role: "Personal Trainer & Coach",
     country: "gb" as const,
+    company: "Thornton Fitness",
+    photo: "/images/testimonials/james-thornton.webp",
+    rating: 5,
+  },
+  {
+    id: "testimonial-james-whitfield",
+    text: "I was fully booked within six weeks of launching my new site. The design is clean, the copy hits exactly the right tone for my audience, and the Calendly integration means new clients can book straight from the homepage. Best business investment I've made this year.",
+    name: "James Whitfield",
+    role: "Business Coach",
+    country: "gb" as const,
+    company: "Whitfield Coaching",
+    photo: "/images/testimonials/james.webp",
+    rating: 5,
   },
 ]
 
-const firstColumn = testimonials.slice(0, 2)
-const secondColumn = testimonials.slice(2, 4)
-const thirdColumn = testimonials.slice(4, 6)
+// 8 testimonials split evenly: 3 / 3 / 2
+const firstColumn = testimonials.slice(0, 3)
+const secondColumn = testimonials.slice(3, 6)
+const thirdColumn = testimonials.slice(6, 8)
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -201,6 +241,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── TRUST BAR ──────────────────────────────────────────────────────── */}
+      <TrustBar />
 
       {/* ── FAQ ────────────────────────────────────────────────────────────── */}
       <FAQSection />
