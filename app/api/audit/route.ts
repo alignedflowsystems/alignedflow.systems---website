@@ -47,12 +47,13 @@ export async function GET(req: NextRequest) {
     if (!res.ok) {
       const body = await res.json().catch(() => ({}))
       const rawMessage: string = body?.error?.message ?? ""
+      const rawStatus: number = body?.error?.code ?? res.status
       // Translate common Google API errors into user-friendly messages
       const message = rawMessage.toLowerCase().includes("quota")
         ? "The audit service is temporarily unavailable due to high demand. Please try again in a few minutes."
         : rawMessage.toLowerCase().includes("unable to fetch")
           ? "Could not reach that website. Make sure it is publicly accessible and try again."
-          : "Could not analyse that URL. Make sure the site is publicly accessible."
+          : `Could not analyse that URL. (${rawStatus}: ${rawMessage || "unknown error"})`
       return NextResponse.json({ error: message }, { status: 502 })
     }
 
