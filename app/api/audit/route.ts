@@ -35,19 +35,12 @@ export async function GET(req: NextRequest) {
   // PSI accepts repeated `category` params — URLSearchParams joins them with &
   const psiCategories = CATEGORIES.map((c) => `category=${c}`).join("&")
   const apiKey = process.env.PAGESPEED_API_KEY
-  const psiUrl = `${PSI_BASE}?url=${encodeURIComponent(url)}&strategy=mobile&${psiCategories}${apiKey ? `&key=${apiKey}` : ""}`
-
-  // Manual timeout via Promise.race — AbortSignal.timeout() is not supported
-  // on Cloudflare Edge Runtime
-  const timeout = new Promise<never>((_, reject) =>
-    setTimeout(() => reject(new Error("TIMEOUT")), 25_000)
-  )
+  // fields= limits the response to only category scores (~1KB vs ~200KB full response)
+  // This is critical on Cloudflare Pages free plan (10ms CPU time limit)
+  const psiUrl = `${PSI_BASE}?url=${encodeURIComponent(url)}&strategy=mobile&${psiCategories}&fields=lighthouseResult.categories${apiKey ? `&key=${apiKey}` : ""}`
 
   try {
-    const res = await Promise.race([
-      fetch(psiUrl),
-      timeout,
-    ]) as Response
+    const res = await fetch(psiUrl)
 
     if (!res.ok) {
       const body = await res.json().catch(() => ({}))
@@ -81,13 +74,8 @@ export async function GET(req: NextRequest) {
       fetchedAt: new Date().toISOString(),
     })
   } catch (err) {
-    const isTimeout = err instanceof Error && err.message === "TIMEOUT"
     return NextResponse.json(
-      {
-        error: isTimeout
-          ? "The audit timed out. The site may be too slow to analyse right now."
-          : `Failed to contact Google PageSpeed Insights. (${err instanceof Error ? err.message : String(err)})`,
-      },
+      { error: `Failed to contact Google PageSpeed Insights. (${err instanceof Error ? err.message : String(err)})` },
       { status: 502 }
     )
   }
