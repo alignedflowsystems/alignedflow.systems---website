@@ -10,7 +10,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   "name": "AlignedFlow Systems",
   "description": "Modern, fast websites for wellness coaches, spiritual creators, and small businesses worldwide.",
-  "url": "https://alignedflowsystems.com",
+  "url": "https://www.alignedflowsystems.com",
   "areaServed": "Worldwide",
   "serviceType": "Web Design and Development",
   "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
@@ -41,7 +41,7 @@ const portfolioJsonLd = {
       "@type": "CreativeWork",
       "name": project.client,
       "description": project.description,
-      "url": `https://alignedflowsystems.com/portfolio/${project.id}`,
+      "url": `https://www.alignedflowsystems.com/portfolio/${project.id}`,
       "creator": { "@type": "Organization", "name": "AlignedFlow Systems" },
       "keywords": project.type.split(" / "),
     },
@@ -61,7 +61,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AlignedFlow Systems | Web Design for Businesses & Creators",
   description: "Modern, fast websites for wellness coaches, spiritual creators, and small businesses worldwide.",
-  metadataBase: new URL("https://alignedflowsystems.com"),
+  metadataBase: new URL("https://www.alignedflowsystems.com"),
   icons: {
     icon: [
       { url: "/favicon-192.png", type: "image/png", sizes: "192x192" },
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://alignedflowsystems.com",
+    url: "https://www.alignedflowsystems.com",
     title: "AlignedFlow Systems | Web Design for Businesses & Creators",
     description: "Modern, fast websites for wellness coaches, spiritual creators, and small businesses worldwide.",
     siteName: "AlignedFlow Systems",

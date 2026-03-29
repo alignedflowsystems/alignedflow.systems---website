@@ -83,7 +83,7 @@ export default async function BlogPostPage({
     publisher: { "@type": "Organization", name: "AlignedFlow Systems" },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
-    url: `https://alignedflowsystems.com/blog/${post.slug}`,
+    url: `https://www.alignedflowsystems.com/blog/${post.slug}`,
   }
 
   return (

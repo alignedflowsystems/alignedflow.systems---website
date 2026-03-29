@@ -48,11 +48,12 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: { canonical: `https://www.alignedflowsystems.com/portfolio/${slug}` },
     openGraph: {
       title,
       description,
       type: "article",
-      url: `https://alignedflowsystems.com/portfolio/${slug}`,
+      url: `https://www.alignedflowsystems.com/portfolio/${slug}`,
     },
     twitter: {
       card: "summary_large_image",

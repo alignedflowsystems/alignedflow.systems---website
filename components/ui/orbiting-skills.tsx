@@ -151,6 +151,36 @@ const GlowingOrbitPath = memo(({ radius, glowColor = 'cyan', animationDelay = 0 
 });
 GlowingOrbitPath.displayName = 'GlowingOrbitPath';
 
+// ── Static grid fallback (mobile + prefers-reduced-motion) ────────────────────
+
+function StaticSkillGrid() {
+  return (
+    <div className="grid grid-cols-3 gap-4 px-4 py-8 max-w-sm mx-auto">
+      {skillsConfig.map((config) => {
+        const IconComponent = iconComponents[config.iconType]?.component;
+        return (
+          <div
+            key={config.id}
+            className="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/60 border border-white/10"
+          >
+            <div
+              className="w-10 h-10 p-2 rounded-full bg-gray-700/80 flex items-center justify-center"
+              style={{ boxShadow: `0 0 12px ${iconComponents[config.iconType]?.color}30` }}
+            >
+              {IconComponent && <IconComponent />}
+            </div>
+            <span className="text-xs text-gray-300 text-center leading-tight font-medium">
+              {config.label}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── Main component ────────────────────────────────────────────────────────────
+
 const CONTENT_DIAMETER = 410;
 
 export default function OrbitingSkills() {
@@ -158,7 +188,17 @@ export default function OrbitingSkills() {
   const [isPaused, setIsPaused] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [scale, setScale] = useState(1);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
+
+  // Detect prefers-reduced-motion once on mount
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -190,7 +230,8 @@ export default function OrbitingSkills() {
   }, []);
 
   useEffect(() => {
-    if (isPaused || !isVisible) return;
+    // Skip animation entirely if user prefers reduced motion
+    if (prefersReducedMotion || isPaused || !isVisible) return;
     let animationFrameId: number;
     let lastTime = performance.now();
     const animate = (currentTime: number) => {
@@ -201,7 +242,7 @@ export default function OrbitingSkills() {
     };
     animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused, isVisible]);
+  }, [prefersReducedMotion, isPaused, isVisible]);
 
   const orbitConfigs: Array<{ radius: number; glowColor: GlowColor; delay: number }> = [
     { radius: 100, glowColor: 'cyan',   delay: 0   },
@@ -210,41 +251,49 @@ export default function OrbitingSkills() {
 
   return (
     <div className="w-full flex items-center justify-center overflow-hidden">
-      <div
-        ref={containerRef}
-        className="relative w-[calc(100vw-40px)] h-[calc(100vw-40px)] md:w-[450px] md:h-[450px] flex items-center justify-center"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div className="absolute inset-0 flex items-center justify-center" style={{ transform: `scale(${scale})` }}>
-          {/* Central icon */}
-          <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center z-10 relative shadow-2xl">
-            <div className="absolute inset-0 rounded-full bg-cyan-500/30 blur-xl animate-pulse" />
-            <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
-            <div className="relative z-10">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#06B6D4" />
-                    <stop offset="100%" stopColor="#9333EA" />
-                  </linearGradient>
-                </defs>
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-            </div>
-          </div>
-
-          {orbitConfigs.map((config) => (
-            <GlowingOrbitPath key={`path-${config.radius}`} radius={config.radius} glowColor={config.glowColor} animationDelay={config.delay} />
-          ))}
-
-          {skillsConfig.map((config) => {
-            const angle = time * config.speed + (config.phaseShift || 0);
-            return <OrbitingSkill key={config.id} config={config} angle={angle} />;
-          })}
-        </div>
+      {/* Static grid — shown on mobile and when reduced motion is preferred */}
+      <div className={prefersReducedMotion ? 'block' : 'block md:hidden'}>
+        <StaticSkillGrid />
       </div>
+
+      {/* Animated orbiting version — hidden on mobile and when reduced motion is preferred */}
+      {!prefersReducedMotion && (
+        <div
+          ref={containerRef}
+          className="hidden md:flex relative w-[450px] h-[450px] items-center justify-center"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="absolute inset-0 flex items-center justify-center" style={{ transform: `scale(${scale})` }}>
+            {/* Central icon */}
+            <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center z-10 relative shadow-2xl">
+              <div className="absolute inset-0 rounded-full bg-cyan-500/30 blur-xl animate-pulse" />
+              <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+              <div className="relative z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#06B6D4" />
+                      <stop offset="100%" stopColor="#9333EA" />
+                    </linearGradient>
+                  </defs>
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
+            </div>
+
+            {orbitConfigs.map((config) => (
+              <GlowingOrbitPath key={`path-${config.radius}`} radius={config.radius} glowColor={config.glowColor} animationDelay={config.delay} />
+            ))}
+
+            {skillsConfig.map((config) => {
+              const angle = time * config.speed + (config.phaseShift || 0);
+              return <OrbitingSkill key={config.id} config={config} angle={angle} />;
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

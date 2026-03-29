@@ -1,5 +1,5 @@
 "use client"
-import React from "react"
+import React, { useState } from "react"
 import Image from "next/image"
 import { motion } from "motion/react"
 import { Star, Linkedin } from "lucide-react"
@@ -42,7 +42,9 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 function Avatar({ photo, name }: { photo?: string; name: string }) {
-  if (photo) {
+  const [imgError, setImgError] = useState(false)
+
+  if (photo && !imgError) {
     return (
       <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
         <Image
@@ -51,6 +53,7 @@ function Avatar({ photo, name }: { photo?: string; name: string }) {
           fill
           className="object-cover"
           sizes="48px"
+          onError={() => setImgError(true)}
         />
       </div>
     )
