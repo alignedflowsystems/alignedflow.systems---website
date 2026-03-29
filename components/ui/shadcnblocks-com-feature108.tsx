@@ -49,7 +49,14 @@ const Feature108Inner = ({
 }: Feature108Props) => {
   const searchParams = useSearchParams()
   const [active, setActive] = useState(tabs[0]?.value ?? "")
+  const [showHint, setShowHint] = useState(true)
+
+  // Touch swipe refs
   const touchStartX = useRef<number | null>(null)
+
+  // Mouse drag refs
+  const dragStartX = useRef<number | null>(null)
+  const isDragging = useRef(false)
 
   useEffect(() => {
     const tabParam = searchParams.get("tab")
@@ -58,11 +65,18 @@ const Feature108Inner = ({
     }
   }, [searchParams, tabs])
 
+  // Hide swipe hint after animation completes (~2200ms)
+  useEffect(() => {
+    const timer = setTimeout(() => setShowHint(false), 2200)
+    return () => clearTimeout(timer)
+  }, [])
+
   const activeIndex = tabs.findIndex((t) => t.value === active)
 
   const goNext = () => setActive(tabs[(activeIndex + 1) % tabs.length].value)
   const goPrev = () => setActive(tabs[(activeIndex - 1 + tabs.length) % tabs.length].value)
 
+  // Touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
   }
@@ -71,6 +85,30 @@ const Feature108Inner = ({
     const diff = touchStartX.current - e.changedTouches[0].clientX
     if (Math.abs(diff) > 50) diff > 0 ? goNext() : goPrev()
     touchStartX.current = null
+  }
+
+  // Mouse drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    dragStartX.current = e.clientX
+    isDragging.current = true
+  }
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current) return
+    // Prevent accidental text selection while dragging
+    e.preventDefault()
+  }
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (!isDragging.current || dragStartX.current === null) return
+    e.preventDefault()
+    const diff = dragStartX.current - e.clientX
+    if (Math.abs(diff) > 50) diff > 0 ? goNext() : goPrev()
+    dragStartX.current = null
+    isDragging.current = false
+  }
+  const handleMouseLeave = () => {
+    // Cancel drag if pointer leaves the card
+    dragStartX.current = null
+    isDragging.current = false
   }
 
   return (
@@ -121,9 +159,13 @@ const Feature108Inner = ({
             </button>
 
           <div
-            className="rounded-2xl bg-muted/70 p-6 lg:p-16 touch-pan-y"
+            className="rounded-2xl bg-muted/70 p-6 lg:p-16 touch-pan-y relative select-none cursor-grab active:cursor-grabbing"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
           >
             {/* All panels stay mounted; active one sits in normal flow, inactive ones overlay it absolutely */}
             <div className="relative">
@@ -186,6 +228,36 @@ const Feature108Inner = ({
                 />
               ))}
             </div>
+
+            {/* Mobile swipe hint — shown once on mount, hidden on lg+ */}
+            {showHint && (
+              <motion.div
+                className="lg:hidden absolute bottom-14 left-1/2 -translate-x-1/2 pointer-events-none z-20"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: [0, 1, 1, 1, 1, 1, 0], x: [20, 0, -8, 0, -8, 0, 0] }}
+                transition={{ duration: 2, times: [0, 0.15, 0.35, 0.5, 0.65, 0.8, 1], ease: "easeInOut" }}
+                aria-hidden="true"
+              >
+                <span className="flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
+                  Swipe
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </span>
+              </motion.div>
+            )}
           </div>
           </div>
         </Tabs>
