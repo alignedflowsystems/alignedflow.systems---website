@@ -65,9 +65,9 @@ const Feature108Inner = ({
     }
   }, [searchParams, tabs])
 
-  // Hide swipe hint after animation completes (~2200ms)
+  // Hide swipe hint after 2 sweep cycles (~3600ms)
   useEffect(() => {
-    const timer = setTimeout(() => setShowHint(false), 2200)
+    const timer = setTimeout(() => setShowHint(false), 3600)
     return () => clearTimeout(timer)
   }, [])
 
@@ -232,30 +232,54 @@ const Feature108Inner = ({
             {/* Mobile swipe hint — shown once on mount, hidden on lg+ */}
             {showHint && (
               <motion.div
-                className="lg:hidden absolute bottom-14 left-1/2 -translate-x-1/2 pointer-events-none z-20"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: [0, 1, 1, 1, 1, 1, 0], x: [20, 0, -8, 0, -8, 0, 0] }}
-                transition={{ duration: 2, times: [0, 0.15, 0.35, 0.5, 0.65, 0.8, 1], ease: "easeInOut" }}
+                className="lg:hidden absolute inset-0 flex items-end justify-center pb-16 pointer-events-none z-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 1, 1, 1, 0] }}
+                transition={{ duration: 3.6, times: [0, 0.08, 0.5, 0.85, 0.95, 1], ease: "easeInOut" }}
                 aria-hidden="true"
               >
-                <span className="flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
-                  Swipe
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
+                {/* Track / trail line */}
+                <div className="relative flex items-center justify-center w-32 h-16">
+                  {/* Fading trail dots */}
+                  {[0, 1, 2].map((i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute rounded-full bg-white/25"
+                      style={{ width: 6 - i * 1.5, height: 6 - i * 1.5 }}
+                      animate={{ x: [-48 + i * 14, 16 + i * 14], opacity: [0, 0.6, 0] }}
+                      transition={{ duration: 1.4, delay: i * 0.06, repeat: 1, repeatDelay: 0.3, ease: "easeOut" }}
+                    />
+                  ))}
+
+                  {/* Hand icon */}
+                  <motion.div
+                    animate={{ x: [-44, 24, -44], opacity: [0, 1, 1, 0.8, 0] }}
+                    transition={{ duration: 1.4, times: [0, 0.55, 0.7, 0.9, 1], repeat: 1, repeatDelay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                   >
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </svg>
-                </span>
+                    <svg width="36" height="44" viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      {/* Palm */}
+                      <path d="M12 20V10a2 2 0 0 1 4 0v8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M16 13V8a2 2 0 0 1 4 0v10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M20 13.5V10a2 2 0 0 1 4 0v8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M24 14V12a2 2 0 0 1 4 0v10c0 8-6 14-14 14a10 10 0 0 1-10-10v-6a2 2 0 0 1 4 0v4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      {/* Wrist base */}
+                      <path d="M12 18v2" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </motion.div>
+
+                  {/* Arrow chevrons */}
+                  <motion.div
+                    className="absolute right-0 flex gap-0.5"
+                    animate={{ opacity: [0, 0, 0.7, 0.9, 0] }}
+                    transition={{ duration: 1.4, times: [0, 0.3, 0.55, 0.7, 1], repeat: 1, repeatDelay: 0.3 }}
+                  >
+                    {[0, 1].map((i) => (
+                      <svg key={i} width="10" height="16" viewBox="0 0 10 16" fill="none" style={{ opacity: 1 - i * 0.35 }}>
+                        <path d="M2 2l6 6-6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    ))}
+                  </motion.div>
+                </div>
               </motion.div>
             )}
           </div>
