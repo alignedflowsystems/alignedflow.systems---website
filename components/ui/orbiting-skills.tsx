@@ -250,17 +250,12 @@ export default function OrbitingSkills() {
   ];
 
   return (
-    <div className="w-full flex items-center justify-center overflow-hidden">
-      {/* Static grid — shown on mobile and when reduced motion is preferred */}
-      <div className={prefersReducedMotion ? 'block' : 'block md:hidden'}>
-        <StaticSkillGrid />
-      </div>
-
-      {/* Animated orbiting version — hidden on mobile and when reduced motion is preferred */}
+    <div className="hidden md:flex w-full items-center justify-center overflow-hidden">
+      {/* Animated orbiting version — desktop only, hidden on mobile */}
       {!prefersReducedMotion && (
         <div
           ref={containerRef}
-          className="hidden md:flex relative w-[450px] h-[450px] items-center justify-center"
+          className="relative w-[450px] h-[450px] flex items-center justify-center"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
