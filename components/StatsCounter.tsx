@@ -33,7 +33,7 @@ type Stat = NumericStat | TextStat;
 
 const stats: Stat[] = [
   { kind: "numeric", value: 5,  suffix: "+", title: "Years Experience"  },
-  { kind: "text",    display: "< 3 Week",     title: "Average Delivery" },
+  { kind: "text",    display: "<3 Wks",       title: "Average Delivery" },
   { kind: "text",    display: "24hr",          title: "Response Guarantee" },
   { kind: "numeric", value: 5,  suffix: "★", title: "Five-Star Reviews" },
 ];
