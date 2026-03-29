@@ -65,16 +65,10 @@ const Feature108Inner = ({
     }
   }, [searchParams, tabs])
 
-  // Hide swipe hint after 2 sweep cycles (~3600ms)
-  useEffect(() => {
-    const timer = setTimeout(() => setShowHint(false), 3600)
-    return () => clearTimeout(timer)
-  }, [])
-
   const activeIndex = tabs.findIndex((t) => t.value === active)
 
-  const goNext = () => setActive(tabs[(activeIndex + 1) % tabs.length].value)
-  const goPrev = () => setActive(tabs[(activeIndex - 1 + tabs.length) % tabs.length].value)
+  const goNext = () => { setShowHint(false); setActive(tabs[(activeIndex + 1) % tabs.length].value) }
+  const goPrev = () => { setShowHint(false); setActive(tabs[(activeIndex - 1 + tabs.length) % tabs.length].value) }
 
   // Touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -242,19 +236,17 @@ const Feature108Inner = ({
                   }
                   @keyframes swipe-fade {
                     0%   { opacity: 0; }
-                    8%   { opacity: 1; }
-                    88%  { opacity: 1; }
-                    100% { opacity: 0; }
+                    100% { opacity: 1; }
                   }
                 `}</style>
                 <div
                   className="lg:hidden absolute inset-0 flex items-end justify-center pb-14 pointer-events-none z-20"
-                  style={{ animation: "swipe-fade 3.6s ease-in-out forwards" }}
+                  style={{ animation: "swipe-fade 0.4s ease-out forwards" }}
                   aria-hidden="true"
                 >
                   <div className="relative flex items-center justify-center w-28 h-14">
                     {/* Hand icon */}
-                    <div style={{ animation: "swipe-hand 1.5s ease-in-out 2 forwards" }}>
+                    <div style={{ animation: "swipe-hand 1.5s ease-in-out infinite" }}>
                       <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 18V9a2.5 2.5 0 0 1 5 0v7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M15 11V7a2.5 2.5 0 0 1 5 0v9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
