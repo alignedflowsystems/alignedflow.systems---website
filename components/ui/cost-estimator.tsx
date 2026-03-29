@@ -778,14 +778,6 @@ export function CostEstimator() {
                         Get Your Exact Quote
                         <ChevronRight className="h-4 w-4" />
                       </Link>
-                      <a
-                        href="https://calendly.com/alignedflowsystems"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 hover:border-cyan-400 hover:text-cyan-400 text-white text-sm font-semibold transition-colors"
-                      >
-                        Book a Free Call
-                      </a>
                     </div>
 
                     {/* Email capture */}
