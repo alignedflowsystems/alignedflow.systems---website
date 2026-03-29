@@ -1,6 +1,5 @@
 "use client"
-import React, { useState } from "react"
-import Image from "next/image"
+import React from "react"
 import { Star, Linkedin } from "lucide-react"
 
 export type Testimonial = {
@@ -40,23 +39,7 @@ function StarRating({ rating }: { rating: number }) {
   )
 }
 
-function Avatar({ photo, name }: { photo?: string; name: string }) {
-  const [imgError, setImgError] = useState(false)
-
-  if (photo && !imgError) {
-    return (
-      <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
-        <Image
-          src={photo}
-          alt={name}
-          fill
-          className="object-cover"
-          sizes="48px"
-          onError={() => setImgError(true)}
-        />
-      </div>
-    )
-  }
+function Avatar({ name }: { name: string }) {
   return (
     <div
       className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-cyan-600 text-white text-sm font-semibold"
@@ -92,7 +75,7 @@ export const TestimonialsColumn = (props: {
                 {rating !== undefined && <StarRating rating={rating} />}
                 <div className="text-sm leading-relaxed">{text}</div>
                 <div className="mt-5 flex items-center gap-3">
-                  <Avatar photo={photo} name={name} />
+                  <Avatar name={name} />
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
                       <p className="font-semibold text-sm leading-tight">{name}</p>
