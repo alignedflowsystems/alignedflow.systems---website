@@ -69,6 +69,7 @@ export function SiteFooter() {
                 { label: "About Us", href: "/#about" },
                 { label: "Packages", href: "/#services" },
                 { label: "Team", href: "/team" },
+                { label: "Blog", href: "/blog" },
                 { label: "Contact", href: "/contact" },
               ].map((l) => (
                 <li key={l.label}>

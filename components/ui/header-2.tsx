@@ -12,6 +12,7 @@ const navLinks = [
     { label: 'About', href: '/#about', page: false },
     { label: 'Services', href: '/#services', page: false },
     { label: 'Team', href: '/team', page: true },
+    { label: 'Blog', href: '/blog', page: true },
     { label: 'Contact', href: '/contact', page: true },
 ];
 
