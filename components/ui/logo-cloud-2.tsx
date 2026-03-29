@@ -18,8 +18,8 @@ const logos: Logo[] = [
   { src: "/logos/tailwindcss.svg", alt: "Tailwind CSS" },
   { src: "/logos/figma.svg", alt: "Figma" },
   { src: "/logos/vercel.svg", alt: "Vercel" },
-  { src: "/logos/stripe.svg", alt: "Stripe" },
-  { src: "/logos/wordpress.svg", alt: "WordPress" },
+  { src: "/logos/stripe-logo.svg", alt: "Stripe" },
+  { src: "/logos/wordpress-logo.svg", alt: "WordPress" },
 ]
 
 export function LogoCloud({ className, ...props }: LogoCloudProps) {
