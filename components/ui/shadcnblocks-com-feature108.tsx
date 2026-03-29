@@ -229,58 +229,51 @@ const Feature108Inner = ({
               ))}
             </div>
 
-            {/* Mobile swipe hint — shown once on mount, hidden on lg+ */}
+            {/* Mobile swipe hint — CSS-driven for Safari compatibility */}
             {showHint && (
-              <motion.div
-                className="lg:hidden absolute inset-0 flex items-end justify-center pb-16 pointer-events-none z-20"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 1, 1, 1, 0] }}
-                transition={{ duration: 3.6, times: [0, 0.08, 0.5, 0.85, 0.95, 1], ease: "easeInOut" }}
-                aria-hidden="true"
-              >
-                {/* Track / trail line */}
-                <div className="relative flex items-center justify-center w-32 h-16">
-                  {/* Fading trail dots */}
-                  {[0, 1, 2].map((i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute rounded-full bg-white/25"
-                      style={{ width: 6 - i * 1.5, height: 6 - i * 1.5 }}
-                      animate={{ x: [-48 + i * 14, 16 + i * 14], opacity: [0, 0.6, 0] }}
-                      transition={{ duration: 1.4, delay: i * 0.06, repeat: 1, repeatDelay: 0.3, ease: "easeOut" }}
-                    />
-                  ))}
-
-                  {/* Hand icon */}
-                  <motion.div
-                    animate={{ x: [-44, 24, -44], opacity: [0, 1, 1, 0.8, 0] }}
-                    transition={{ duration: 1.4, times: [0, 0.55, 0.7, 0.9, 1], repeat: 1, repeatDelay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  >
-                    <svg width="36" height="44" viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      {/* Palm */}
-                      <path d="M12 20V10a2 2 0 0 1 4 0v8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M16 13V8a2 2 0 0 1 4 0v10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M20 13.5V10a2 2 0 0 1 4 0v8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M24 14V12a2 2 0 0 1 4 0v10c0 8-6 14-14 14a10 10 0 0 1-10-10v-6a2 2 0 0 1 4 0v4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      {/* Wrist base */}
-                      <path d="M12 18v2" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  </motion.div>
-
-                  {/* Arrow chevrons */}
-                  <motion.div
-                    className="absolute right-0 flex gap-0.5"
-                    animate={{ opacity: [0, 0, 0.7, 0.9, 0] }}
-                    transition={{ duration: 1.4, times: [0, 0.3, 0.55, 0.7, 1], repeat: 1, repeatDelay: 0.3 }}
-                  >
-                    {[0, 1].map((i) => (
-                      <svg key={i} width="10" height="16" viewBox="0 0 10 16" fill="none" style={{ opacity: 1 - i * 0.35 }}>
-                        <path d="M2 2l6 6-6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <>
+                <style>{`
+                  @keyframes swipe-hand {
+                    0%   { transform: translateX(-36px); opacity: 0; }
+                    12%  { transform: translateX(-36px); opacity: 1; }
+                    65%  { transform: translateX(36px);  opacity: 1; }
+                    80%  { transform: translateX(36px);  opacity: 0; }
+                    100% { transform: translateX(36px);  opacity: 0; }
+                  }
+                  @keyframes swipe-fade {
+                    0%   { opacity: 0; }
+                    8%   { opacity: 1; }
+                    88%  { opacity: 1; }
+                    100% { opacity: 0; }
+                  }
+                `}</style>
+                <div
+                  className="lg:hidden absolute inset-0 flex items-end justify-center pb-14 pointer-events-none z-20"
+                  style={{ animation: "swipe-fade 3.6s ease-in-out forwards" }}
+                  aria-hidden="true"
+                >
+                  <div className="relative flex items-center justify-center w-28 h-14">
+                    {/* Hand icon */}
+                    <div style={{ animation: "swipe-hand 1.5s ease-in-out 2 forwards" }}>
+                      <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 18V9a2.5 2.5 0 0 1 5 0v7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M15 11V7a2.5 2.5 0 0 1 5 0v9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M20 11.5V9a2.5 2.5 0 0 1 5 0v7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M25 12v-1.5a2.5 2.5 0 0 1 5 0v9C30 27 24.627 34 16 34A12 12 0 0 1 4 22v-5.5a2.5 2.5 0 0 1 5 0V20" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                    ))}
-                  </motion.div>
+                    </div>
+                    {/* Chevron arrows */}
+                    <div className="absolute right-1 flex gap-0.5 opacity-70">
+                      <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+                        <path d="M1 1l6 6-6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" style={{ opacity: 0.5 }}>
+                        <path d="M1 1l6 6-6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
+              </>
             )}
           </div>
           </div>
