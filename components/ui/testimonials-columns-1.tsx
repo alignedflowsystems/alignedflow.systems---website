@@ -1,7 +1,6 @@
 "use client"
 import React, { useState } from "react"
 import Image from "next/image"
-import { motion } from "motion/react"
 import { Star, Linkedin } from "lucide-react"
 
 export type Testimonial = {
@@ -75,17 +74,13 @@ export const TestimonialsColumn = (props: {
 }) => {
   return (
     <div className={props.className}>
-      <motion.div
-        animate={{
-          translateY: "-50%",
-        }}
-        transition={{
-          duration: props.duration || 10,
-          repeat: Infinity,
-          ease: "linear",
-          repeatType: "loop",
-        }}
+      {/* CSS animation runs on the GPU compositor thread — no JS, no jank on mobile */}
+      <div
         className="flex flex-col gap-6 pb-6 bg-background"
+        style={{
+          animation: `testimonials-scroll ${props.duration || 10}s linear infinite`,
+          willChange: "transform",
+        }}
       >
         {[...new Array(2).fill(0).map((_, index) => (
           <React.Fragment key={index}>
@@ -129,7 +124,7 @@ export const TestimonialsColumn = (props: {
             ))}
           </React.Fragment>
         ))]}
-      </motion.div>
+      </div>
     </div>
   )
 }
