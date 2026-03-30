@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/ui/cookie-banner";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { faqItems } from "@/lib/faq-data";
 import { portfolioProjects } from "@/lib/portfolio-data";
 
@@ -113,6 +114,7 @@ export default function RootLayout({
       >
         {children}
         <CookieBanner />
+        <ScrollToTop />
       </body>
     </html>
   );
