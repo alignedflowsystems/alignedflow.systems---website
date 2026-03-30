@@ -3,7 +3,7 @@ import { portfolioProjects } from "@/lib/portfolio-data"
 import { blogPosts } from "@/lib/blog-data"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://alignedflowsystems.com"
+  const base = "https://www.alignedflowsystems.com"
 
   const portfolioEntries: MetadataRoute.Sitemap = portfolioProjects.map((project) => ({
     url: `${base}/portfolio/${project.id}`,
