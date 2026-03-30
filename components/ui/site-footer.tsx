@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic"
 import Link from "next/link"
-import { Linkedin, Github } from "lucide-react"
+import { Github } from "lucide-react"
 
 const SparklesCore = dynamic(
   () => import("@/components/ui/sparkles").then((m) => m.SparklesCore),
@@ -90,15 +90,6 @@ export function SiteFooter() {
         <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm">
           <p>&copy; {new Date().getFullYear()} AlignedFlow Systems Limited. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <a
-              href="https://linkedin.com/in/mateusz-alignedflow"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="hover:text-white transition-colors"
-            >
-              <Linkedin className="h-4 w-4" />
-            </a>
             <a
               href="https://github.com/alignedflowsystems"
               target="_blank"

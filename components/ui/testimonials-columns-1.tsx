@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { Star, Linkedin } from "lucide-react"
+import { Star } from "lucide-react"
 
 export type Testimonial = {
   id?: string
@@ -10,7 +10,6 @@ export type Testimonial = {
   country?: "gb" | "pl"
   photo?: string
   company?: string
-  linkedinUrl?: string
   rating?: number
 }
 
@@ -67,7 +66,7 @@ export const TestimonialsColumn = (props: {
       >
         {[...new Array(2).fill(0).map((_, index) => (
           <React.Fragment key={index}>
-            {props.testimonials.map(({ id, text, name, role, country, photo, company, linkedinUrl, rating }) => (
+            {props.testimonials.map(({ id, text, name, role, country, photo, company, rating }) => (
               <div
                 className="p-6 rounded-2xl border shadow-lg shadow-primary/10 max-w-xs w-full"
                 key={id ?? name}
@@ -79,17 +78,6 @@ export const TestimonialsColumn = (props: {
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
                       <p className="font-semibold text-sm leading-tight">{name}</p>
-                      {linkedinUrl && (
-                        <a
-                          href={linkedinUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${name} on LinkedIn`}
-                          className="text-muted-foreground hover:text-cyan-400 transition-colors"
-                        >
-                          <Linkedin className="w-3 h-3" />
-                        </a>
-                      )}
                     </div>
                     {company && (
                       <p className="text-xs text-muted-foreground leading-tight">{company}</p>
