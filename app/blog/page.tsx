@@ -50,6 +50,7 @@ export default function BlogPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
+                aria-label={post.title}
                 className="group flex flex-col rounded-2xl border border-white/10 bg-white/3 hover:border-cyan-500/40 hover:bg-white/5 transition-all duration-300 overflow-hidden"
               >
                 {/* Image placeholder */}

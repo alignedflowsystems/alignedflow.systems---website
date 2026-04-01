@@ -148,6 +148,7 @@ export function Header() {
                     </Link>
                     <Link
                         href="/contact"
+                        aria-label="Get a quote — contact us"
                         className="hidden md:inline-flex bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
                     >
                         Get a Quote
@@ -164,7 +165,7 @@ export function Header() {
 
             {/* Mobile menu */}
             <div
-                aria-hidden={!menuOpen}
+                aria-hidden={menuOpen ? undefined : true}
                 className={cn(
                     'md:hidden overflow-hidden transition-all duration-300 ease-in-out',
                     menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
@@ -205,6 +206,7 @@ export function Header() {
                     <Link
                         href="/contact"
                         tabIndex={menuOpen ? undefined : -1}
+                        aria-label="Get a quote — contact us"
                         className="mt-1 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors text-center"
                     >
                         Get a Quote

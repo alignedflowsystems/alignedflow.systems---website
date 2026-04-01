@@ -102,8 +102,8 @@ export const PremiumHero = () => {
 
           <div className="flex flex-row gap-4 flex-wrap justify-center">
             <Button size="lg" className="gap-2 rounded-full bg-cyan-600 hover:bg-cyan-700 text-white border-none" asChild>
-              <Link href="/contact">
-                Get a Quote <MoveRight className="w-4 h-4" />
+              <Link href="/contact" aria-label="Get a quote for your website">
+                Get a Quote <MoveRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </Button>
             <Button size="lg" className="gap-2 rounded-full border-white/30 text-white hover:bg-cyan-400/20 hover:border-cyan-400 hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.35)] transition-all duration-300" variant="outline" asChild>

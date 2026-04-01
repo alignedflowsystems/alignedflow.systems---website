@@ -31,7 +31,7 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
       <div
         id={answerId}
         role="region"
-        aria-hidden={!open}
+        aria-hidden={open ? undefined : true}
         style={{
           overflow: "hidden",
           maxHeight: open ? "600px" : "0",

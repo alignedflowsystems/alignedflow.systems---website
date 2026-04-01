@@ -170,7 +170,7 @@ const Feature108Inner = ({
                     key={tab.value}
                     animate={{ opacity: isActive ? 1 : 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    aria-hidden={!isActive}
+                    aria-hidden={isActive ? undefined : true}
                     className="grid place-items-center gap-20 lg:grid-cols-2 lg:gap-10"
                     style={
                       isActive
@@ -190,7 +190,13 @@ const Feature108Inner = ({
                         </p>
                       )}
                       <Button className="mt-2.5 w-fit gap-2 bg-cyan-600 hover:bg-cyan-700 text-white" size="lg" asChild>
-                        <Link href={`/contact?package=${tab.value}`}>Get a Quote</Link>
+                        <Link
+                          href={`/contact?package=${tab.value}`}
+                          tabIndex={isActive ? undefined : -1}
+                          aria-label={`Get a quote for ${tab.label}`}
+                        >
+                          Get a Quote
+                        </Link>
                       </Button>
                     </div>
                     <div className="relative w-full aspect-video">
@@ -208,18 +214,23 @@ const Feature108Inner = ({
             </div>
 
             {/* Dot indicators */}
-            <div className="flex items-center justify-center gap-2 mt-6">
+            <div className="flex items-center justify-center gap-1 mt-6">
               {tabs.map((tab) => (
                 <button
                   key={tab.value}
                   onClick={() => setActive(tab.value)}
-                  className={`rounded-full transition-all duration-300 ${
-                    tab.value === active
-                      ? "w-6 h-2 bg-cyan-500"
-                      : "w-2 h-2 bg-muted-foreground/40"
-                  }`}
+                  className="flex items-center justify-center w-6 h-6 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                   aria-label={`Go to ${tab.label}`}
-                />
+                  aria-current={tab.value === active ? "true" : undefined}
+                >
+                  <span
+                    className={`block rounded-full transition-all duration-300 ${
+                      tab.value === active
+                        ? "w-6 h-2 bg-cyan-500"
+                        : "w-2 h-2 bg-muted-foreground/40"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 

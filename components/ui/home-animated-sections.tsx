@@ -249,6 +249,7 @@ export function CTABanner() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
+              aria-label="Get a quote — start your project"
               className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-cyan-700 bg-white rounded-full hover:bg-cyan-50 transition-colors shadow-lg"
             >
               Get a Quote

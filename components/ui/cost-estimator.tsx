@@ -276,7 +276,7 @@ function PricePanel({ basePrice, featureTotal, monthlyPrice, compact = false }: 
             {low !== null ? (
               <div className="text-base font-bold text-white">
                 <AnimatedPrice value={low} />
-                <span className="text-white/60 mx-1">-</span>
+                <span className="text-white/80 mx-1" aria-hidden="true">-</span>
                 <AnimatedPrice value={high!} />
               </div>
             ) : (
@@ -307,7 +307,7 @@ function PricePanel({ basePrice, featureTotal, monthlyPrice, compact = false }: 
           <div className="text-xs text-muted-foreground mb-1">Estimated project cost</div>
           <div className="text-2xl font-bold text-white mb-1 flex flex-wrap gap-1 items-baseline">
             <AnimatedPrice value={low} />
-            <span className="text-white/40 text-lg">-</span>
+            <span className="text-white/70 text-lg" aria-hidden="true">-</span>
             <AnimatedPrice value={high!} />
           </div>
           {monthlyPrice > 0 && (
@@ -510,7 +510,7 @@ export function CostEstimator() {
                                 <div className="text-xs text-muted-foreground mt-0.5">{type.description}</div>
                                 <div className={cn(
                                   "text-sm font-bold mt-2 transition-colors",
-                                  selectedSiteType === type.id ? "text-cyan-400" : "text-white/60"
+                                  selectedSiteType === type.id ? "text-cyan-400" : "text-white/80"
                                 )}>
                                   from {formatPrice(type.basePrice)}
                                 </div>
@@ -601,7 +601,7 @@ export function CostEstimator() {
                               <div className="shrink-0 text-right">
                                 <div className={cn(
                                   "text-sm font-bold transition-colors",
-                                  selectedSupport === plan.id ? "text-cyan-400" : "text-white/60"
+                                  selectedSupport === plan.id ? "text-cyan-400" : "text-white/80"
                                 )}>
                                   {plan.monthlyPrice === 0 ? "£0/mo" : `${formatPrice(plan.monthlyPrice)}/mo`}
                                 </div>
@@ -711,7 +711,7 @@ export function CostEstimator() {
                         <>
                           <div className="text-5xl md:text-6xl font-bold text-cyan-400 leading-none">
                             {formatPrice(low)}
-                            <span className="text-white/40 mx-3 text-4xl">-</span>
+                            <span className="text-white/70 mx-3 text-4xl" aria-hidden="true">-</span>
                             {formatPrice(high!)}
                           </div>
                           <p className="mt-2 text-sm text-muted-foreground">One-time project cost</p>

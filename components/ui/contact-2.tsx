@@ -150,9 +150,9 @@ const ContactFormInner = () => {
             <span className="text-xs font-semibold tracking-widest text-cyan-400 uppercase">
               Get In Touch
             </span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">
+            <h1 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">
               Ready to build something you’re proud of?
-            </h2>
+            </h1>
             <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
               Fill in the form with a brief overview of the project and a response will follow within 24 hours. All enquiries are treated with discretion and professionalism.
             </p>
