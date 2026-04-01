@@ -75,6 +75,12 @@ export function Header() {
                     <Link
                         href="/"
                         className="flex flex-col leading-tight text-cyan-400 tracking-tight font-bold"
+                        onClick={(e) => {
+                            if (pathname === '/') {
+                                e.preventDefault();
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        }}
                     >
                         {/* The full text is rendered immediately on the server (and before JS runs)
                             to avoid layout shift (CLS). After hydration, the Typewriter component
