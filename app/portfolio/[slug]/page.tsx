@@ -90,7 +90,7 @@ export default async function CaseStudyPage({
         <section className="pt-32 pb-16 px-4">
           <div className="max-w-3xl mx-auto">
             {/* Category badge */}
-            <span className="inline-block text-xs font-semibold tracking-widest text-cyan-600 uppercase mb-5">
+            <span className="inline-block text-xs font-semibold tracking-widest text-cyan-400 uppercase mb-5">
               {project.type}
             </span>
 
@@ -136,7 +136,7 @@ export default async function CaseStudyPage({
         {/* ── Challenge ─────────────────────────────────────────────────────── */}
         <section className="px-4 pb-16">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-xs font-semibold tracking-widest text-cyan-600 uppercase mb-3">
+            <h2 className="text-xs font-semibold tracking-widest text-cyan-400 uppercase mb-3">
               The Challenge
             </h2>
             <p className="text-gray-300 leading-relaxed text-base md:text-lg">
@@ -148,7 +148,7 @@ export default async function CaseStudyPage({
         {/* ── Solution ──────────────────────────────────────────────────────── */}
         <section className="px-4 pb-16">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-xs font-semibold tracking-widest text-cyan-600 uppercase mb-3">
+            <h2 className="text-xs font-semibold tracking-widest text-cyan-400 uppercase mb-3">
               The Solution
             </h2>
             <p className="text-gray-300 leading-relaxed text-base md:text-lg mb-6">
@@ -173,7 +173,7 @@ export default async function CaseStudyPage({
         {project.result && (
           <section className="px-4 pb-20">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-xs font-semibold tracking-widest text-cyan-600 uppercase mb-5">
+              <h2 className="text-xs font-semibold tracking-widest text-cyan-400 uppercase mb-5">
                 The Results
               </h2>
               <p

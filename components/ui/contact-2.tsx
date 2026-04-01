@@ -147,7 +147,7 @@ const ContactFormInner = () => {
           viewport={{ once: true }}
         >
           <div>
-            <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">
+            <span className="text-xs font-semibold tracking-widest text-cyan-400 uppercase">
               Get In Touch
             </span>
             <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">

@@ -8,25 +8,25 @@ import { GlowingEffect } from "@/components/ui/glowing-effect"
 
 const whyCards = [
   {
-    icon: <Zap className="h-6 w-6 text-cyan-600" />,
+    icon: <Zap className="h-6 w-6 text-cyan-400" />,
     title: "Efficient Delivery",
     description:
       "Projects are scoped and delivered within agreed timelines, with progress communicated at every stage.",
   },
   {
-    icon: <BarChart2 className="h-6 w-6 text-cyan-600" />,
+    icon: <BarChart2 className="h-6 w-6 text-cyan-400" />,
     title: "Results-Oriented",
     description:
       "Every design and development decision is grounded in the business objectives set out at the start of the project.",
   },
   {
-    icon: <CheckSquare className="h-6 w-6 text-cyan-600" />,
+    icon: <CheckSquare className="h-6 w-6 text-cyan-400" />,
     title: "Structured Approach",
     description:
       "A defined workflow, transparent communication, and clearly agreed deliverables from initial brief to final handover.",
   },
   {
-    icon: <Headphones className="h-6 w-6 text-cyan-600" />,
+    icon: <Headphones className="h-6 w-6 text-cyan-400" />,
     title: "Post-Launch Support",
     description:
       "Support continues beyond the launch date. Monthly care plans are available, and enquiries are responded to promptly by email.",
@@ -43,7 +43,7 @@ export function TeamPage() {
 
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <motion.span
-            className="text-xs font-semibold tracking-widest text-cyan-600 uppercase"
+            className="text-xs font-semibold tracking-widest text-cyan-400 uppercase"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -98,14 +98,14 @@ export function TeamPage() {
             {/* Avatar */}
             <div className="flex flex-col items-center text-center">
               <div className="w-[120px] h-[120px] rounded-full bg-cyan-600/20 border-2 border-cyan-600/40 flex items-center justify-center mb-6">
-                <span className="text-cyan-600 font-bold text-2xl select-none">MD</span>
+                <span className="text-cyan-400 font-bold text-2xl select-none">MD</span>
               </div>
 
               {/* Name */}
               <h2 className="text-2xl font-bold">Mateusz Dobosz</h2>
 
               {/* Title */}
-              <p className="mt-1 text-cyan-600 text-sm font-semibold tracking-widest uppercase">
+              <p className="mt-1 text-cyan-400 text-sm font-semibold tracking-widest uppercase">
                 Founder &amp; Lead Developer
               </p>
 
@@ -144,7 +144,7 @@ export function TeamPage() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">
+            <span className="text-xs font-semibold tracking-widest text-cyan-400 uppercase">
               Why AlignedFlow Systems
             </span>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold">
@@ -205,7 +205,7 @@ export function TeamPage() {
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-cyan-600 bg-white rounded-full hover:bg-cyan-50 transition-colors shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-cyan-700 bg-white rounded-full hover:bg-cyan-50 transition-colors shadow-lg"
               >
                 Get a Quote
               </Link>

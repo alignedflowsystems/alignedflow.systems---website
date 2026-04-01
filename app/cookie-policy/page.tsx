@@ -38,7 +38,7 @@ export default function CookiePolicyPage() {
               This Cookie Policy applies to the website operated by{" "}
               <strong className="text-foreground">AlignedFlow Systems</strong>.
               Any questions about cookie usage can be directed to{" "}
-              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-600 hover:underline">
+              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-400 hover:underline">
                 hello@alignedflowsystems.com
               </a>.
             </p>
@@ -107,7 +107,7 @@ export default function CookiePolicyPage() {
                 <strong className="text-foreground">Opt-out tools:</strong> Some third-party analytics
                 providers offer opt-out mechanisms - for example, Google Analytics provides a browser
                 add-on at{" "}
-                <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-cyan-600 hover:underline">
+                <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">
                   tools.google.com/dlpage/gaoptout
                 </a>.
               </li>
@@ -137,7 +137,7 @@ export default function CookiePolicyPage() {
             </p>
             <p className="mt-3">
               <strong className="text-foreground">AlignedFlow Systems</strong><br />
-              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-600 hover:underline">
+              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-400 hover:underline">
                 hello@alignedflowsystems.com
               </a>
             </p>

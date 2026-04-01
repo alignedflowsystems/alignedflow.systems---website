@@ -26,10 +26,11 @@ function getInitials(name: string): string {
 
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex items-center gap-0.5 mb-3">
+    <div className="flex items-center gap-0.5 mb-3" role="img" aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
+          aria-hidden="true"
           className={`w-3 h-3 ${i < rating ? "text-yellow-400" : "text-muted-foreground"}`}
           fill={i < rating ? "currentColor" : "none"}
         />
@@ -88,9 +89,9 @@ export const TestimonialsColumn = (props: {
                     {company && (
                       <p className="text-xs text-muted-foreground leading-tight">{company}</p>
                     )}
-                    <div className="leading-5 opacity-60 tracking-tight text-xs mt-0.5">{role}</div>
+                    <div className="leading-5 text-muted-foreground tracking-tight text-xs mt-0.5">{role}</div>
                     {country && (
-                      <div className="mt-1 flex items-center gap-1 text-xs text-muted-foreground/50 tracking-wide">
+                      <div className="mt-1 flex items-center gap-1 text-xs text-muted-foreground tracking-wide">
                         <span aria-hidden="true">{countryLabel[country].flag}</span>
                         <span>{countryLabel[country].label}</span>
                       </div>

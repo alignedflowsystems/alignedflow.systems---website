@@ -109,7 +109,7 @@ function PortfolioCard({
         {/* Card body */}
         <div className="flex flex-col flex-1 p-6 pt-5">
           {/* Type badge */}
-          <span className="inline-block text-xs font-semibold tracking-widest text-cyan-600 uppercase mb-2">
+          <span className="inline-block text-xs font-semibold tracking-widest text-cyan-400 uppercase mb-2">
             {project.type}
           </span>
           <h3 className="text-lg font-semibold text-foreground mb-3">
@@ -158,7 +158,7 @@ export function PortfolioGrid() {
         {/* Section header */}
         <div className="text-center mb-14">
           <motion.span
-            className="text-xs font-semibold tracking-widest text-cyan-600 uppercase"
+            className="text-xs font-semibold tracking-widest text-cyan-400 uppercase"
             initial={{ opacity: 0, y: -12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

@@ -25,28 +25,28 @@ interface Step {
 
 const steps: Step[] = [
   {
-    icon: <MessageCircle className="h-8 w-8 text-cyan-600" />,
+    icon: <MessageCircle className="h-8 w-8 text-cyan-400" />,
     step: "01",
     title: "Initial Enquiry",
     description:
       "Share a brief overview of the project via the contact form. A considered response with recommended next steps follows within 24 hours.",
   },
   {
-    icon: <Lightbulb className="h-8 w-8 text-cyan-600" />,
+    icon: <Lightbulb className="h-8 w-8 text-cyan-400" />,
     step: "02",
     title: "Proposal & Scope",
     description:
       "A detailed proposal is prepared outlining the project scope, deliverables, and timeline, providing a clear foundation before work begins.",
   },
   {
-    icon: <PenTool className="h-8 w-8 text-cyan-600" />,
+    icon: <PenTool className="h-8 w-8 text-cyan-400" />,
     step: "03",
     title: "Design & Development",
     description:
       "The site is designed and developed to specification with purposeful visual direction and clean, performant code built for long-term reliability.",
   },
   {
-    icon: <Rocket className="h-8 w-8 text-cyan-600" />,
+    icon: <Rocket className="h-8 w-8 text-cyan-400" />,
     step: "04",
     title: "Launch & Handover",
     description:
@@ -115,7 +115,7 @@ export function AboutSection() {
           className="relative rounded-2xl border border-border bg-background p-8 shadow-sm"
         >
           <GlowingEffect {...glowProps} />
-          <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">
+          <span className="text-xs font-semibold tracking-widest text-cyan-400 uppercase">
             About
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-snug">
@@ -163,7 +163,7 @@ export function HowItWorksSection() {
     <section className="py-24 px-4 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">
+          <span className="text-xs font-semibold tracking-widest text-cyan-400 uppercase">
             The Process
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold">
@@ -213,7 +213,7 @@ export function TestimonialsHeading() {
       viewport={{ once: true }}
       className="flex flex-col items-center justify-center max-w-xl mx-auto text-center mb-10"
     >
-      <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">
+      <span className="text-xs font-semibold tracking-widest text-cyan-400 uppercase">
         Client Testimonials
       </span>
       <h2 className="mt-3 text-3xl md:text-4xl font-bold">
@@ -249,7 +249,7 @@ export function CTABanner() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-cyan-600 bg-white rounded-full hover:bg-cyan-50 transition-colors shadow-lg"
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-cyan-700 bg-white rounded-full hover:bg-cyan-50 transition-colors shadow-lg"
             >
               Get a Quote
             </Link>

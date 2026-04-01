@@ -29,14 +29,14 @@ export default function PrivacyPolicyPage() {
             <p>
               <strong className="text-foreground">AlignedFlow Systems</strong> is a web design and
               development studio. The website address is{" "}
-              <a href="https://alignedflowsystems.com" className="text-cyan-600 hover:underline">
+              <a href="https://alignedflowsystems.com" className="text-cyan-400 hover:underline">
                 alignedflowsystems.com
               </a>.
             </p>
             <p className="mt-3">
               AlignedFlow Systems is the data controller responsible for personal information collected
               through this website. Any questions about this policy can be directed to{" "}
-              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-600 hover:underline">
+              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-400 hover:underline">
                 hello@alignedflowsystems.com
               </a>.
             </p>
@@ -67,7 +67,7 @@ export default function PrivacyPolicyPage() {
                   example, which pages are most visited and how long people spend on the site. This data
                   is collected in aggregated, anonymised form and is not used to identify individuals
                   personally. For full details on the cookies used and how to manage them, see the{" "}
-                  <a href="/cookie-policy" className="text-cyan-600 hover:underline">Cookie Policy</a>.
+                  <a href="/cookie-policy" className="text-cyan-400 hover:underline">Cookie Policy</a>.
                 </p>
               </div>
 
@@ -174,7 +174,7 @@ export default function PrivacyPolicyPage() {
             </ul>
             <p className="mt-4 text-sm">
               To exercise any of these rights, email{" "}
-              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-600 hover:underline">
+              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-400 hover:underline">
                 hello@alignedflowsystems.com
               </a>. A response will be provided within 30 days. There is no charge for making a request.
             </p>
@@ -206,7 +206,7 @@ export default function PrivacyPolicyPage() {
             <p>
               For full information about the cookies used on this site and how to manage preferences, please
               read the{" "}
-              <a href="/cookie-policy" className="text-cyan-600 hover:underline">Cookie Policy</a>.
+              <a href="/cookie-policy" className="text-cyan-400 hover:underline">Cookie Policy</a>.
             </p>
           </section>
 
@@ -229,7 +229,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <p className="mt-3">
               <strong className="text-foreground">AlignedFlow Systems</strong><br />
-              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-600 hover:underline">
+              <a href="mailto:hello@alignedflowsystems.com" className="text-cyan-400 hover:underline">
                 hello@alignedflowsystems.com
               </a>
             </p>
@@ -239,7 +239,7 @@ export default function PrivacyPolicyPage() {
                 href="https://ico.org.uk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cyan-600 hover:underline"
+                className="text-cyan-400 hover:underline"
               >
                 Information Commissioner&apos;s Office (ICO)
               </a>{" "}

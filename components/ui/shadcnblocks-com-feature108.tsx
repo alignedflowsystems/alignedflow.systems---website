@@ -111,7 +111,7 @@ const Feature108Inner = ({
       <div className="pointer-events-none absolute -bottom-40 left-0 w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-3xl" />
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center gap-3 text-center">
-          <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">{badge}</span>
+          <span className="text-xs font-semibold tracking-widest text-cyan-400 uppercase">{badge}</span>
           <h2 className="mt-1 max-w-2xl text-3xl font-bold md:text-4xl">{heading}</h2>
           <p className="text-muted-foreground max-w-xl">{description}</p>
         </div>

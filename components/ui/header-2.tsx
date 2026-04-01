@@ -175,6 +175,7 @@ export function Header() {
                         <Link
                             key={link.href}
                             href={link.href}
+                            tabIndex={menuOpen ? undefined : -1}
                             aria-current={isActive(link) ? 'page' : undefined}
                             onClick={(e) => {
                                 if (!link.page && pathname === '/') {
@@ -195,6 +196,7 @@ export function Header() {
                     ))}
                     <Link
                         href="/estimate"
+                        tabIndex={menuOpen ? undefined : -1}
                         className="mt-2 border border-white/20 hover:border-cyan-400 hover:text-cyan-400 text-white/80 text-sm font-semibold px-5 py-2.5 rounded-full transition-colors text-center"
                         onClick={() => setMenuOpen(false)}
                     >
@@ -202,6 +204,7 @@ export function Header() {
                     </Link>
                     <Link
                         href="/contact"
+                        tabIndex={menuOpen ? undefined : -1}
                         className="mt-1 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors text-center"
                     >
                         Get a Quote

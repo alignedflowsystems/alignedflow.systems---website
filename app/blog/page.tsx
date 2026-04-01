@@ -30,7 +30,7 @@ export default function BlogPage() {
         {/* ── Section header ──────────────────────────────────────────────────── */}
         <section className="pt-32 pb-12 px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <span className="inline-block text-xs font-semibold tracking-widest text-cyan-600 uppercase mb-4">
+            <span className="inline-block text-xs font-semibold tracking-widest text-cyan-400 uppercase mb-4">
               Blog
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -61,7 +61,7 @@ export default function BlogPage() {
 
                 <div className="flex flex-col flex-1 p-5 gap-3">
                   {/* Category badge */}
-                  <span className="inline-block self-start text-xs font-semibold tracking-widest text-cyan-600 uppercase">
+                  <span className="inline-block self-start text-xs font-semibold tracking-widest text-cyan-400 uppercase">
                     {post.category}
                   </span>
 

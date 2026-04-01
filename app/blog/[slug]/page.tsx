@@ -109,7 +109,7 @@ export default async function BlogPostPage({
             </Link>
 
             {/* Category badge */}
-            <span className="block text-xs font-semibold tracking-widest text-cyan-600 uppercase mb-4">
+            <span className="block text-xs font-semibold tracking-widest text-cyan-400 uppercase mb-4">
               {post.category}
             </span>
 
@@ -143,7 +143,7 @@ export default async function BlogPostPage({
                 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:leading-snug
                 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3
                 [&_p]:mb-5 [&_p]:text-base [&_p]:leading-relaxed
-                [&_ul]:mb-5 [&_ul]:pl-5 [&_ul]:space-y-2 [&_ul]:list-disc [&_ul]:marker:text-cyan-600
+                [&_ul]:mb-5 [&_ul]:pl-5 [&_ul]:space-y-2 [&_ul]:list-disc [&_ul]:marker:text-cyan-400
                 [&_li]:text-base [&_li]:leading-relaxed
                 [&_strong]:text-white [&_strong]:font-semibold
                 [&_em]:italic

@@ -52,7 +52,7 @@ export function FAQSection() {
     <section id="faq" className="py-24 px-4 bg-black">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <span className="text-xs font-semibold tracking-widest text-cyan-600 uppercase">
+          <span className="text-xs font-semibold tracking-widest text-cyan-400 uppercase">
             FAQ
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-white">

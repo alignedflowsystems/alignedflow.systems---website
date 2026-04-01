@@ -251,7 +251,7 @@ export default function OrbitingSkills() {
   ];
 
   return (
-    <div className="hidden md:flex w-full items-center justify-center overflow-hidden">
+    <div className="hidden md:flex w-full items-center justify-center overflow-hidden" aria-hidden="true">
       {/* Animated orbiting version - desktop only, hidden on mobile */}
       {!prefersReducedMotion && (
         <div
