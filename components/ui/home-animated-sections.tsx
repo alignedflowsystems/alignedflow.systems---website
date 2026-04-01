@@ -94,7 +94,7 @@ export function BuiltWithHeading() {
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.8 }}
       >
-        The same tools used by the world's fastest-growing companies —
+        The same tools used by the world's fastest-growing companies -
         so your site is built to perform, scale, and last.
       </motion.p>
     </div>
@@ -170,8 +170,8 @@ export function HowItWorksSection() {
             A structured process designed for clarity and efficiency.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Every project follows a defined workflow — from initial enquiry through to a
-            successful launch — with full visibility and regular communication at each stage.
+            Every project follows a defined workflow - from initial enquiry through to a
+            successful launch - with full visibility and regular communication at each stage.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">

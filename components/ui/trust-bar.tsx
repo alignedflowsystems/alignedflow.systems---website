@@ -1,4 +1,4 @@
-// Placeholder trust badges — to be replaced with real embed widgets
+// Placeholder trust badges - to be replaced with real embed widgets
 // when Google Business and Clutch profiles are set up
 
 export function TrustBar() {

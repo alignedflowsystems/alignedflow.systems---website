@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/ui/site-footer"
 import { blogPosts, getBlogPost } from "@/lib/blog-data"
 import { renderMarkdown } from "@/lib/render-markdown"
 
-// Required for Cloudflare Pages — prevents "Invalid prerender config" warning
+// Required for Cloudflare Pages - prevents "Invalid prerender config" warning
 // and ensures RSC prefetch routes are generated correctly alongside the HTML.
 export const dynamic = "force-static"
 
@@ -179,7 +179,7 @@ export default async function BlogPostPage({
               </p>
               <p className="text-gray-400 text-sm mb-6 leading-relaxed">
                 AlignedFlow Systems builds fast, conversion-focused websites for wellness
-                professionals. From landing pages to full multi-page sites — built to attract the
+                professionals. From landing pages to full multi-page sites - built to attract the
                 right clients.
               </p>
               <Link

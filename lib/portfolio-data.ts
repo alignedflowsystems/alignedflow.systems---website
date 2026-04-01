@@ -1,12 +1,12 @@
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 export type PortfolioProject = {
-  /** Stable unique identifier — used as the URL slug and React list key */
+  /** Stable unique identifier - used as the URL slug and React list key */
   id: string
   client: string
   type: string
   description: string
-  /** Optional client quote — leave as empty string when not yet available */
+  /** Optional client quote - leave as empty string when not yet available */
   quote: string
   /** Key result metric achieved after launch */
   result?: string
@@ -19,7 +19,7 @@ export type PortfolioProject = {
 }
 
 // ── Project data ──────────────────────────────────────────────────────────────
-// Add new projects here — each object is consumed by both the homepage grid
+// Add new projects here - each object is consumed by both the homepage grid
 // and the individual /portfolio/[slug] case study pages.
 
 export const portfolioProjects: PortfolioProject[] = [

@@ -5,7 +5,7 @@ import { Header } from "@/components/ui/header-2"
 import { SiteFooter } from "@/components/ui/site-footer"
 import { portfolioProjects } from "@/lib/portfolio-data"
 
-// Required for Cloudflare Pages — prevents "Invalid prerender config" warning
+// Required for Cloudflare Pages - prevents "Invalid prerender config" warning
 // and ensures RSC prefetch routes are generated correctly alongside the HTML.
 export const dynamic = "force-static"
 
@@ -42,7 +42,7 @@ export async function generateMetadata({
   const project = portfolioProjects.find((p) => p.id === slug)
   if (!project) return {}
 
-  const title = `${project.client} — Case Study | AlignedFlow Systems`
+  const title = `${project.client} - Case Study | AlignedFlow Systems`
   const description = project.description
 
   return {
@@ -155,7 +155,7 @@ export default async function CaseStudyPage({
               {narrative.solution}
             </p>
 
-            {/* Tech stack pills — repeated in solution context */}
+            {/* Tech stack pills - repeated in solution context */}
             <div className="flex flex-wrap gap-2">
               {project.type.split(" / ").map((tech) => (
                 <span

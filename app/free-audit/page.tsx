@@ -7,12 +7,12 @@ import { FreeAuditTool } from "@/components/ui/free-audit-tool"
 export const metadata = {
   title: "Free Website Audit | AlignedFlow Systems",
   description:
-    "Enter your website URL and get an instant performance audit — speed, SEO, accessibility, and best practices scores powered by Google PageSpeed Insights.",
+    "Enter your website URL and get an instant performance audit - speed, SEO, accessibility, and best practices scores powered by Google PageSpeed Insights.",
   alternates: { canonical: "https://www.alignedflowsystems.com/free-audit" },
   openGraph: {
     title: "Free Website Audit | AlignedFlow Systems",
     description:
-      "Get an instant performance audit for your website — speed, SEO, accessibility, and best practices scores.",
+      "Get an instant performance audit for your website - speed, SEO, accessibility, and best practices scores.",
   },
 }
 

@@ -23,7 +23,7 @@ export default function NotFound() {
           </p>
 
           <h1 className="text-2xl md:text-3xl font-bold mt-4 text-white">
-            This page doesn&apos;t exist — but your next website could.
+            This page doesn&apos;t exist - but your next website could.
           </h1>
           <p className="text-gray-400 mt-3 max-w-sm mx-auto">
             The page you&apos;re looking for has moved or never existed.

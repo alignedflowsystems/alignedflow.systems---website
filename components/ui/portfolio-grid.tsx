@@ -92,17 +92,17 @@ function PortfolioCard({
       <div className="relative flex flex-col bg-background rounded-xl overflow-hidden shadow-sm h-full">
         {/* Screenshot area */}
         <div className="flex items-end gap-4 p-4 pb-3 bg-[#0a0f1a]">
-          {/* Desktop mockup — takes majority of the width */}
+          {/* Desktop mockup - takes majority of the width */}
           <div className="flex-1 min-w-0">
             <BrowserMockup
               src={project.images.desktop}
-              alt={`${project.client} — desktop view`}
+              alt={`${project.client} - desktop view`}
             />
           </div>
-          {/* Mobile mockup — pinned to the right */}
+          {/* Mobile mockup - pinned to the right */}
           <PhoneMockup
             src={project.images.mobile}
-            alt={`${project.client} — mobile view`}
+            alt={`${project.client} - mobile view`}
           />
         </div>
 
@@ -126,7 +126,7 @@ function PortfolioCard({
             </span>
           )}
 
-          {/* Quote — only rendered when populated */}
+          {/* Quote - only rendered when populated */}
           {project.quote && (
             <blockquote className="mt-4 pl-3 border-l-2 border-cyan-600 text-sm italic text-muted-foreground">
               &ldquo;{project.quote}&rdquo;
@@ -198,10 +198,10 @@ export function PortfolioGrid() {
           ))}
         </div>
 
-        {/* "Coming soon" nudge — shown while portfolio is growing */}
+        {/* "Coming soon" nudge - shown while portfolio is growing */}
         <div className="text-center mt-10">
           <p className="text-muted-foreground text-sm">
-            More projects coming soon —{" "}
+            More projects coming soon -{" "}
             <Link
               href="/free-audit"
               className="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity"

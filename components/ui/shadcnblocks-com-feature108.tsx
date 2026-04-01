@@ -223,7 +223,7 @@ const Feature108Inner = ({
               ))}
             </div>
 
-            {/* Mobile swipe hint — CSS-driven for Safari compatibility */}
+            {/* Mobile swipe hint - CSS-driven for Safari compatibility */}
             {showHint && (
               <>
                 <style>{`

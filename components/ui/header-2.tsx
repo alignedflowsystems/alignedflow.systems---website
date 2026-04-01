@@ -105,7 +105,7 @@ export function Header() {
                     </Link>
                 </div>
 
-                {/* Center: Nav links — always pinned to middle column */}
+                {/* Center: Nav links - always pinned to middle column */}
                 <nav className="hidden md:flex items-center justify-center gap-6">
                     {navLinks.map((link) => (
                         <Link

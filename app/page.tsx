@@ -65,7 +65,7 @@ const services = [
       badge: "Monthly Care Plan",
       title: "Ongoing management, support, and performance.",
       description:
-        "A retained service covering hosting, security monitoring, performance optimisation, and content updates. Designed for businesses that want their website actively maintained rather than left static — with priority support and regular reviews included as standard.",
+        "A retained service covering hosting, security monitoring, performance optimisation, and content updates. Designed for businesses that want their website actively maintained rather than left static - with priority support and regular reviews included as standard.",
       startingFrom: "£97/mo",
       buttonText: "Get a Quote",
       imageSrc: "/services/monthly-care-plan.svg",
@@ -97,7 +97,7 @@ const testimonials = [
   },
   {
     id: "testimonial-sophie-bennett",
-    text: "Before working with AlignedFlow, we were taking bookings over the phone and losing students to studios with slicker online systems. The new site went live in under three weeks and our online bookings are up 65%. The whole process was stress-free — Mateusz handled everything.",
+    text: "Before working with AlignedFlow, we were taking bookings over the phone and losing students to studios with slicker online systems. The new site went live in under three weeks and our online bookings are up 65%. The whole process was stress-free - Mateusz handled everything.",
     name: "Sophie Bennett",
     role: "Studio Owner",
     country: "gb" as const,
@@ -107,7 +107,7 @@ const testimonials = [
   },
   {
     id: "testimonial-tomasz-wisniewski",
-    text: "Needed a site that looked professional without a premium price tag. The end result exceeded expectations — straightforward to work with, and delivered quickly.",
+    text: "Needed a site that looked professional without a premium price tag. The end result exceeded expectations - straightforward to work with, and delivered quickly.",
     name: "Tomasz Wiśniewski",
     role: "Personal Trainer, Warsaw",
     country: "pl" as const,
@@ -127,7 +127,7 @@ const testimonials = [
   },
   {
     id: "testimonial-karolina-jablonska",
-    text: "Needed a site that handled bookings and a product shop together. The result was clean, loaded fast, and there were no issues on launch day — exactly what was promised.",
+    text: "Needed a site that handled bookings and a product shop together. The result was clean, loaded fast, and there were no issues on launch day - exactly what was promised.",
     name: "Karolina Jabłońska",
     role: "Founder, Studio Równowaga",
     country: "pl" as const,
@@ -178,9 +178,9 @@ export default function HomePage() {
 
       {/* ── BUILT WITH / LOGOS ─────────────────────────────────────────────── */}
       <section className="relative pt-2 pb-12 px-4 overflow-hidden bg-black">
-        {/* Top fade — blends into hero */}
+        {/* Top fade - blends into hero */}
         <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#030303] to-transparent pointer-events-none z-20" />
-        {/* Bottom fade — blends into Orbiting Skills */}
+        {/* Bottom fade - blends into Orbiting Skills */}
         <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black to-transparent pointer-events-none z-20" />
         <div className="relative z-10 max-w-4xl mx-auto pt-16">
           <BuiltWithHeading />
@@ -208,7 +208,7 @@ export default function HomePage() {
         <Feature108
           badge="Services"
           heading="Tailored solutions for every stage of growth."
-          description="Each service is scoped to deliver measurable value — whether launching a new presence, expanding an existing one, or ensuring long-term performance and reliability."
+          description="Each service is scoped to deliver measurable value - whether launching a new presence, expanding an existing one, or ensuring long-term performance and reliability."
           tabs={services}
         />
       </section>

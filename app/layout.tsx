@@ -34,7 +34,7 @@ const faqJsonLd = {
 const portfolioJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Portfolio — AlignedFlow Systems",
+  "name": "Portfolio - AlignedFlow Systems",
   "itemListElement": portfolioProjects.map((project, index) => ({
     "@type": "ListItem",
     "position": index + 1,

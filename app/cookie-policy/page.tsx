@@ -3,12 +3,12 @@ import { SiteFooter } from "@/components/ui/site-footer"
 
 export const metadata = {
   title: "Cookie Policy | AlignedFlow Systems",
-  description: "Cookie Policy for AlignedFlow Systems — how cookies and similar technologies are used on this website.",
+  description: "Cookie Policy for AlignedFlow Systems - how cookies and similar technologies are used on this website.",
   alternates: { canonical: "https://www.alignedflowsystems.com/cookie-policy" },
   robots: { index: false },
   openGraph: {
     title: "Cookie Policy | AlignedFlow Systems",
-    description: "Cookie Policy for AlignedFlow Systems — how cookies and similar technologies are used on this website.",
+    description: "Cookie Policy for AlignedFlow Systems - how cookies and similar technologies are used on this website.",
   },
 }
 
@@ -105,7 +105,7 @@ export default function CookiePolicyPage() {
               </li>
               <li>
                 <strong className="text-foreground">Opt-out tools:</strong> Some third-party analytics
-                providers offer opt-out mechanisms — for example, Google Analytics provides a browser
+                providers offer opt-out mechanisms - for example, Google Analytics provides a browser
                 add-on at{" "}
                 <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-cyan-600 hover:underline">
                   tools.google.com/dlpage/gaoptout

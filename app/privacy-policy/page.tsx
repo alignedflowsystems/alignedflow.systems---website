@@ -3,12 +3,12 @@ import { SiteFooter } from "@/components/ui/site-footer"
 
 export const metadata = {
   title: "Privacy Policy | AlignedFlow Systems",
-  description: "Privacy Policy for AlignedFlow Systems — how personal data is collected, used, and protected.",
+  description: "Privacy Policy for AlignedFlow Systems - how personal data is collected, used, and protected.",
   alternates: { canonical: "https://www.alignedflowsystems.com/privacy-policy" },
   robots: { index: false },
   openGraph: {
     title: "Privacy Policy | AlignedFlow Systems",
-    description: "Privacy Policy for AlignedFlow Systems — how personal data is collected, used, and protected.",
+    description: "Privacy Policy for AlignedFlow Systems - how personal data is collected, used, and protected.",
   },
 }
 
@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
               <div className="rounded-xl border border-border p-5">
                 <h3 className="font-semibold text-foreground mb-2">Cookies & Analytics</h3>
                 <p className="text-sm">
-                  Cookies and analytics tools are used to understand how visitors use this website — for
+                  Cookies and analytics tools are used to understand how visitors use this website - for
                   example, which pages are most visited and how long people spend on the site. This data
                   is collected in aggregated, anonymised form and is not used to identify individuals
                   personally. For full details on the cookies used and how to manage them, see the{" "}
@@ -97,8 +97,8 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-3">3. Client & Project Information</h2>
             <p>
-              Information provided by clients during the course of a project — including business
-              details, creative briefs, login credentials, or access to third-party platforms — is
+              Information provided by clients during the course of a project - including business
+              details, creative briefs, login credentials, or access to third-party platforms - is
               treated as strictly private and confidential. Such information is:
             </p>
             <ul className="list-disc pl-5 space-y-2 text-sm mt-3">
@@ -114,10 +114,10 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-xl font-semibold text-foreground mb-3">4. Legal Basis for Processing</h2>
             <p className="mb-3">Personal data is processed under the following legal bases (UK GDPR / EU GDPR):</p>
             <ul className="list-disc pl-5 space-y-2 text-sm">
-              <li><strong className="text-foreground">Legitimate interests</strong> — responding to enquiries and operating the business</li>
-              <li><strong className="text-foreground">Contract performance</strong> — delivering services requested</li>
-              <li><strong className="text-foreground">Legal obligation</strong> — where required by applicable law</li>
-              <li><strong className="text-foreground">Consent</strong> — where explicitly agreed, such as opting in to updates</li>
+              <li><strong className="text-foreground">Legitimate interests</strong> - responding to enquiries and operating the business</li>
+              <li><strong className="text-foreground">Contract performance</strong> - delivering services requested</li>
+              <li><strong className="text-foreground">Legal obligation</strong> - where required by applicable law</li>
+              <li><strong className="text-foreground">Consent</strong> - where explicitly agreed, such as opting in to updates</li>
             </ul>
           </section>
 
@@ -128,10 +128,10 @@ export default function PrivacyPolicyPage() {
               Personal data is retained only as long as necessary for the purposes set out in this policy:
             </p>
             <ul className="list-disc pl-5 space-y-2 text-sm mt-3">
-              <li>Contact form enquiries — up to 24 months, unless deletion is requested sooner</li>
-              <li>Active client project data — for the duration of the project and up to 12 months after completion</li>
-              <li>Financial and invoicing records — as required by law (typically 6 years)</li>
-              <li>Analytics data — in anonymised, aggregated form with no fixed retention limit</li>
+              <li>Contact form enquiries - up to 24 months, unless deletion is requested sooner</li>
+              <li>Active client project data - for the duration of the project and up to 12 months after completion</li>
+              <li>Financial and invoicing records - as required by law (typically 6 years)</li>
+              <li>Analytics data - in anonymised, aggregated form with no fixed retention limit</li>
             </ul>
           </section>
 
@@ -144,16 +144,16 @@ export default function PrivacyPolicyPage() {
             </p>
             <ul className="list-disc pl-5 space-y-2 text-sm">
               <li>
-                <strong className="text-foreground">Service providers</strong> — trusted tools and
+                <strong className="text-foreground">Service providers</strong> - trusted tools and
                 platforms used to operate the business (e.g. hosting on Cloudflare Pages, email delivery). All are
                 bound by appropriate data processing agreements.
               </li>
               <li>
-                <strong className="text-foreground">Spam detection</strong> — contact form submissions
+                <strong className="text-foreground">Spam detection</strong> - contact form submissions
                 may be checked through an automated spam detection service.
               </li>
               <li>
-                <strong className="text-foreground">Legal requirements</strong> — where required by law,
+                <strong className="text-foreground">Legal requirements</strong> - where required by law,
                 court order, or regulatory authority.
               </li>
             </ul>
@@ -164,13 +164,13 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-xl font-semibold text-foreground mb-3">7. Your Rights</h2>
             <p className="mb-3">Under UK GDPR and EU GDPR, you have the right to:</p>
             <ul className="list-disc pl-5 space-y-2 text-sm">
-              <li><strong className="text-foreground">Access</strong> — request a copy of the personal data held about you</li>
-              <li><strong className="text-foreground">Rectification</strong> — request correction of inaccurate or incomplete data</li>
-              <li><strong className="text-foreground">Erasure</strong> — request deletion of personal data</li>
-              <li><strong className="text-foreground">Restriction</strong> — request limits on how personal data is processed</li>
-              <li><strong className="text-foreground">Portability</strong> — receive data in a structured, machine-readable format</li>
-              <li><strong className="text-foreground">Objection</strong> — object to processing based on legitimate interests</li>
-              <li><strong className="text-foreground">Withdraw consent</strong> — at any time, where processing is based on consent</li>
+              <li><strong className="text-foreground">Access</strong> - request a copy of the personal data held about you</li>
+              <li><strong className="text-foreground">Rectification</strong> - request correction of inaccurate or incomplete data</li>
+              <li><strong className="text-foreground">Erasure</strong> - request deletion of personal data</li>
+              <li><strong className="text-foreground">Restriction</strong> - request limits on how personal data is processed</li>
+              <li><strong className="text-foreground">Portability</strong> - receive data in a structured, machine-readable format</li>
+              <li><strong className="text-foreground">Objection</strong> - object to processing based on legitimate interests</li>
+              <li><strong className="text-foreground">Withdraw consent</strong> - at any time, where processing is based on consent</li>
             </ul>
             <p className="mt-4 text-sm">
               To exercise any of these rights, email{" "}

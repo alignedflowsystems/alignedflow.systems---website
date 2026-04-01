@@ -64,7 +64,8 @@
       "Bash(grep -rn console.log --include=*.tsx --include=*.ts --include=*.js . --exclude-dir=node_modules --exclude-dir=.next)",
       "Bash(cp public/logos/stripe.svg public/logos/stripe-logo.svg)",
       "Bash(cp public/logos/wordpress.svg public/logos/wordpress-logo.svg)",
-      "Bash(xargs sed:*)"
+      "Bash(xargs sed:*)",
+      "Bash(node -e \":*)"
     ]
   }
 }

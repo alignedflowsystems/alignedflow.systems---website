@@ -97,7 +97,7 @@ export const PremiumHero = () => {
           </h1>
 
           <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center mt-8">
-            Fast, conversion-focused sites for wellness professionals — with a clear process and a fixed timeline.
+            Fast, conversion-focused sites for wellness professionals - with a clear process and a fixed timeline.
           </p>
 
           <div className="flex flex-row gap-4 flex-wrap justify-center">

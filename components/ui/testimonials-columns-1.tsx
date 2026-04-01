@@ -56,7 +56,7 @@ export const TestimonialsColumn = (props: {
 }) => {
   return (
     <div className={props.className}>
-      {/* CSS animation runs on the GPU compositor thread — no JS, no jank on mobile */}
+      {/* CSS animation runs on the GPU compositor thread - no JS, no jank on mobile */}
       <div
         className="flex flex-col gap-6 pb-6 bg-background"
         style={{

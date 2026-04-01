@@ -100,7 +100,7 @@ export function renderMarkdown(md: string): string {
       }
 
       if (!tableHeaderDone) {
-        // Additional header rows before separator — treat as header
+        // Additional header rows before separator - treat as header
         output.push("<tr>")
         cells.forEach((c) => output.push(`<th>${processInline(c)}</th>`))
         output.push("</tr>")
@@ -135,7 +135,7 @@ export function renderMarkdown(md: string): string {
     // Regular paragraph
     closeTable()
     if (inList) {
-      // Continuation of list context — close list first
+      // Continuation of list context - close list first
       closeList()
     }
     output.push(`<p>${processInline(line)}</p>`)
