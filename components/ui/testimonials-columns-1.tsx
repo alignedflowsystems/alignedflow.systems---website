@@ -55,7 +55,10 @@ export const TestimonialsColumn = (props: {
   duration?: number
 }) => {
   return (
-    <div className={props.className}>
+    <div
+      className={props.className}
+      aria-label="Client testimonials"
+    >
       {/* CSS animation runs on the GPU compositor thread - no JS, no jank on mobile */}
       <div
         className="flex flex-col gap-6 pb-6 bg-background"
@@ -65,11 +68,14 @@ export const TestimonialsColumn = (props: {
         }}
       >
         {[...new Array(2).fill(0).map((_, index) => (
+          // The second copy is purely visual (infinite-scroll duplicate).
+          // aria-hidden prevents screen readers from reading each card twice.
           <React.Fragment key={index}>
             {props.testimonials.map(({ id, text, name, role, country, photo, company, rating }) => (
               <div
                 className="p-6 rounded-2xl border shadow-lg shadow-primary/10 max-w-xs w-full"
                 key={id ?? name}
+                aria-hidden={index > 0 ? "true" : undefined}
               >
                 {rating !== undefined && <StarRating rating={rating} />}
                 <div className="text-sm leading-relaxed">{text}</div>

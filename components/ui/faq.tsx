@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "motion/react"
 import { faqItems } from "@/lib/faq-data"
 
 function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
@@ -23,23 +22,27 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
           +
         </span>
       </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            id={answerId}
-            key="answer"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            style={{ overflow: "hidden" }}
-          >
-            <p className="pb-5 text-gray-400 leading-relaxed text-sm md:text-base">
-              {answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/*
+        The answer region is always present in the DOM so aria-controls always
+        resolves to a valid element (WCAG 2.1 AA). When closed: visually hidden
+        via max-height/opacity transition, and aria-hidden so screen readers
+        skip the text while it is not exposed.
+      */}
+      <div
+        id={answerId}
+        role="region"
+        aria-hidden={!open}
+        style={{
+          overflow: "hidden",
+          maxHeight: open ? "600px" : "0",
+          opacity: open ? 1 : 0,
+          transition: "max-height 0.25s ease-in-out, opacity 0.2s ease-in-out",
+        }}
+      >
+        <p className="pb-5 text-gray-400 leading-relaxed text-sm md:text-base">
+          {answer}
+        </p>
+      </div>
     </div>
   )
 }

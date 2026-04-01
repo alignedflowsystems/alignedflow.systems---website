@@ -59,7 +59,7 @@ export const SparklesCore = (props: ParticlesProps) => {
           options={{
             background: { color: { value: background || "#000000" } },
             fullScreen: { enable: false, zIndex: 1 },
-            fpsLimit: 120,
+            fpsLimit: 60,
             interactivity: {
               events: {
                 onClick: { enable: true, mode: "push" },

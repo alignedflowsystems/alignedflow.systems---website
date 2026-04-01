@@ -112,7 +112,7 @@ export function Header() {
                 </div>
 
                 {/* Center: Nav links - always pinned to middle column */}
-                <nav className="hidden md:flex items-center justify-center gap-6">
+                <nav aria-label="Main navigation" className="hidden md:flex items-center justify-center gap-6">
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}
@@ -170,7 +170,7 @@ export function Header() {
                     menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
                 )}
             >
-                <nav className="flex flex-col gap-1 px-4 pt-2 pb-4 bg-slate-900/98 backdrop-blur-md border-t border-white/10">
+                <nav aria-label="Mobile navigation" className="flex flex-col gap-1 px-4 pt-2 pb-4 bg-slate-900/98 backdrop-blur-md border-t border-white/10">
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}

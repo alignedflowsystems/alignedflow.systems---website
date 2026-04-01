@@ -98,6 +98,7 @@ const OrbitingSkill = memo(({ config, angle }: OrbitingSkillProps) => {
         height: `${size}px`,
         transform: `translate(calc(${x}px - 50%), calc(${y}px - 50%))`,
         zIndex: isHovered ? 20 : 10,
+        willChange: "transform",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

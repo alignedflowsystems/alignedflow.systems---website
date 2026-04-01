@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -19,6 +19,7 @@ function ElegantShape({
     rotate?: number;
     gradient?: string;
 }) {
+    const prefersReducedMotion = useReducedMotion();
     return (
         <motion.div
             initial={{
@@ -40,9 +41,7 @@ function ElegantShape({
             className={cn("absolute", className)}
         >
             <motion.div
-                animate={{
-                    y: [0, 15, 0],
-                }}
+                animate={prefersReducedMotion ? {} : { y: [0, 15, 0] }}
                 transition={{
                     duration: 12,
                     repeat: Number.POSITIVE_INFINITY,

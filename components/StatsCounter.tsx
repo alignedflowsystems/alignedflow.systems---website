@@ -2,19 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["600"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
 
 interface NumericStat {
   kind: "numeric";
@@ -110,7 +97,7 @@ export function StatsCounter() {
               )}
 
               <dd
-                className={`${cormorant.className} text-6xl md:text-7xl font-semibold leading-none tracking-tight text-white`}
+                className="text-6xl md:text-7xl font-semibold leading-none tracking-tight text-white"
               >
                 {stat.kind === "numeric" ? (
                   <>
@@ -123,7 +110,7 @@ export function StatsCounter() {
               </dd>
 
               <dt
-                className={`${dmSans.className} mt-4 text-[0.75rem] font-medium uppercase tracking-[0.15em] text-cyan-100`}
+                className="mt-4 text-[0.75rem] font-medium uppercase tracking-[0.15em] text-cyan-100"
               >
                 {stat.title}
               </dt>

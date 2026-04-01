@@ -30,6 +30,8 @@ export default function CookieBanner() {
 
   return (
     <motion.div
+      role="region"
+      aria-label="Cookie consent"
       initial={{ y: 80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       className="fixed bottom-0 left-0 right-0 z-50 bg-zinc-900 border-t border-zinc-800"
