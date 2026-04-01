@@ -133,7 +133,7 @@ export function FreeAuditTool() {
     }
 
     // Call Google PageSpeed Insights directly from the browser.
-    // PSI is a public API designed for client-side use — no proxy needed.
+    // PSI is a public API designed for client-side use - no proxy needed.
     const apiKey = process.env.NEXT_PUBLIC_PAGESPEED_API_KEY
     const categories = ["performance", "accessibility", "best-practices", "seo"]
     const categoryParams = categories.map((c) => `category=${c}`).join("&")
@@ -203,7 +203,7 @@ export function FreeAuditTool() {
             transition={{ duration: 0.55, delay: 0.2 }}
           >
             Enter your website URL for an instant report on performance, SEO,
-            accessibility, and best practices — powered by Google PageSpeed
+            accessibility, and best practices - powered by Google PageSpeed
             Insights.
           </motion.p>
         </div>
@@ -303,15 +303,15 @@ export function FreeAuditTool() {
               <div className="flex items-center justify-center gap-6 text-xs text-muted-foreground mb-10">
                 <span className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  90–100 Good
+                  90-100 Good
                 </span>
                 <span className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-amber-400" />
-                  50–89 Needs Work
+                  50-89 Needs Work
                 </span>
                 <span className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-red-400" />
-                  0–49 Poor
+                  0-49 Poor
                 </span>
               </div>
 

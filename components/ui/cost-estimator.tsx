@@ -61,14 +61,14 @@ const siteTypes: SiteType[] = [
   {
     id: "landing-page",
     label: "Landing Page",
-    description: "1–3 pages",
+    description: "1-3 pages",
     icon: <Layout className="h-6 w-6" />,
     basePrice: 497,
   },
   {
     id: "business-website",
     label: "Business Website",
-    description: "4–8 pages",
+    description: "4-8 pages",
     icon: <Globe className="h-6 w-6" />,
     basePrice: 997,
   },
@@ -195,7 +195,7 @@ const timelines: Timeline[] = [
   },
   {
     id: "1-3-months",
-    label: "In 1–3 months",
+    label: "In 1-3 months",
     description: "No immediate rush",
   },
   {
@@ -276,7 +276,7 @@ function PricePanel({ basePrice, featureTotal, monthlyPrice, compact = false }: 
             {low !== null ? (
               <div className="text-base font-bold text-white">
                 <AnimatedPrice value={low} />
-                <span className="text-white/60 mx-1">–</span>
+                <span className="text-white/60 mx-1">-</span>
                 <AnimatedPrice value={high!} />
               </div>
             ) : (
@@ -307,7 +307,7 @@ function PricePanel({ basePrice, featureTotal, monthlyPrice, compact = false }: 
           <div className="text-xs text-muted-foreground mb-1">Estimated project cost</div>
           <div className="text-2xl font-bold text-white mb-1 flex flex-wrap gap-1 items-baseline">
             <AnimatedPrice value={low} />
-            <span className="text-white/40 text-lg">–</span>
+            <span className="text-white/40 text-lg">-</span>
             <AnimatedPrice value={high!} />
           </div>
           {monthlyPrice > 0 && (
@@ -705,13 +705,13 @@ export function CostEstimator() {
                       Your Estimate
                     </span>
 
-                    {/* Price range — very prominent */}
+                    {/* Price range - very prominent */}
                     <div className="mt-4">
                       {low !== null ? (
                         <>
                           <div className="text-5xl md:text-6xl font-bold text-cyan-400 leading-none">
                             {formatPrice(low)}
-                            <span className="text-white/40 mx-3 text-4xl">–</span>
+                            <span className="text-white/40 mx-3 text-4xl">-</span>
                             {formatPrice(high!)}
                           </div>
                           <p className="mt-2 text-sm text-muted-foreground">One-time project cost</p>
@@ -737,7 +737,7 @@ export function CostEstimator() {
                     <div className="mt-8 space-y-4 text-sm">
                       <div className="grid grid-cols-[120px_1fr] gap-x-4 gap-y-3">
                         <span className="text-muted-foreground font-medium">Site type</span>
-                        <span className="text-white">{siteTypeData?.label ?? "—"}</span>
+                        <span className="text-white">{siteTypeData?.label ?? "-"}</span>
 
                         <span className="text-muted-foreground font-medium">Features</span>
                         <div className="flex flex-wrap gap-1.5">
@@ -755,18 +755,18 @@ export function CostEstimator() {
                         </div>
 
                         <span className="text-muted-foreground font-medium">Support</span>
-                        <span className="text-white">{supportData?.label ?? "—"}</span>
+                        <span className="text-white">{supportData?.label ?? "-"}</span>
 
                         <span className="text-muted-foreground font-medium">Timeline</span>
                         <span className="text-white">
-                          {timelines.find((t) => t.id === selectedTimeline)?.label ?? "—"}
+                          {timelines.find((t) => t.id === selectedTimeline)?.label ?? "-"}
                         </span>
                       </div>
                     </div>
 
                     {/* Disclaimer */}
                     <p className="mt-6 text-xs text-muted-foreground border-t border-white/10 pt-4">
-                      This is an estimate — your exact quote may vary based on specific requirements.
+                      This is an estimate - your exact quote may vary based on specific requirements.
                     </p>
 
                     {/* CTAs */}

@@ -25,9 +25,9 @@ const PACKAGE_OPTIONS = [
 const BUDGET_OPTIONS = [
   { value: "", label: "Select your budget range" },
   { value: "under-500", label: "Under £500" },
-  { value: "500-1000", label: "£500 – £1,000" },
-  { value: "1000-2500", label: "£1,000 – £2,500" },
-  { value: "2500-5000", label: "£2,500 – £5,000" },
+  { value: "500-1000", label: "£500 - £1,000" },
+  { value: "1000-2500", label: "£1,000 - £2,500" },
+  { value: "2500-5000", label: "£2,500 - £5,000" },
   { value: "5000-plus", label: "£5,000+" },
   { value: "not-sure", label: "Not sure yet" },
 ] as const;

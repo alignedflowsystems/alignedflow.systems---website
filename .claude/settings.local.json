@@ -59,7 +59,12 @@
       "Bash(curl -s https://www.awwwards.com/websites/freelance/ -A Mozilla/5.0 --max-time 15)",
       "Bash(curl -s https://brutalist.design/ -A Mozilla/5.0 --max-time 10)",
       "Bash(curl -s https://www.awwwards.com/inspiration/search?text=freelance+web+developer+portfolio -A Mozilla/5.0 --max-time 15)",
-      "Bash(\"C:\\\\Users\\\\align\\\\Desktop\\\\Websites\\\\alignedflowsystems\\\\.env.local\")"
+      "Bash(\"C:\\\\Users\\\\align\\\\Desktop\\\\Websites\\\\alignedflowsystems\\\\.env.local\")",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(grep -rn console.log --include=*.tsx --include=*.ts --include=*.js . --exclude-dir=node_modules --exclude-dir=.next)",
+      "Bash(cp public/logos/stripe.svg public/logos/stripe-logo.svg)",
+      "Bash(cp public/logos/wordpress.svg public/logos/wordpress-logo.svg)",
+      "Bash(xargs sed:*)"
     ]
   }
 }

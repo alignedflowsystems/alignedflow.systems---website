@@ -7,17 +7,17 @@ export const faqItems: FAQItem[] = [
   {
     question: "How long does a typical project take?",
     answer:
-      "Most websites are delivered within 2–4 weeks from the initial enquiry, depending on complexity and how quickly content is provided. A clear timeline is confirmed before work begins.",
+      "Most websites are delivered within 2-4 weeks from the initial enquiry, depending on complexity and how quickly content is provided. A clear timeline is confirmed before work begins.",
   },
   {
     question: "Do I need to provide the content?",
     answer:
-      "The text and any photos are provided by you — everything else is handled. If copywriting support is needed, that can be scoped as an add-on. Stock photography and AI-assisted imagery are also available if needed.",
+      "The text and any photos are provided by you - everything else is handled. If copywriting support is needed, that can be scoped as an add-on. Stock photography and AI-assisted imagery are also available if needed.",
   },
   {
     question: "What happens after the website launches?",
     answer:
-      "Ongoing support and maintenance is available after every project. Whether it's updates, new pages, or fixing anything that comes up — AlignedFlow Systems is available after launch, not just during the build.",
+      "Ongoing support and maintenance is available after every project. Whether it's updates, new pages, or fixing anything that comes up - AlignedFlow Systems is available after launch, not just during the build.",
   },
   {
     question: "What if I don't like the design?",
@@ -32,7 +32,7 @@ export const faqItems: FAQItem[] = [
   {
     question: "What do I need to get started?",
     answer:
-      "Just reach out via the contact form. A few questions about the project will follow and next steps will be sent over — no commitment required.",
+      "Just reach out via the contact form. A few questions about the project will follow and next steps will be sent over - no commitment required.",
   },
   {
     question: "How much does a website cost?",
