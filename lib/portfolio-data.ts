@@ -24,6 +24,19 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    id: "emerald-construction",
+    client: "Emerald Construction London",
+    type: "Business Website / Construction",
+    description:
+      "A premium website for a London-based residential and commercial construction company. Built to establish trust and drive enquiries — featuring service showcases, project galleries, testimonials, and a clear conversion flow.",
+    quote: "",
+    link: null,
+    images: {
+      desktop: "/portfolio/emerald-construction-desktop.png",
+      mobile: "/portfolio/emerald-construction-mobile.png",
+    },
+  },
+  {
     id: "monika-walek-photography",
     client: "Monika Walek",
     type: "Landing Page / Personal Brand Website",
