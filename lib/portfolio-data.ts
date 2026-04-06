@@ -28,7 +28,7 @@ export const portfolioProjects: PortfolioProject[] = [
     client: "Emerald Construction London",
     type: "Business Website / Construction",
     description:
-      "A premium website for a London-based residential and commercial construction company. Built to establish trust and drive enquiries — featuring service showcases, project galleries, testimonials, and a clear conversion flow.",
+      "A premium website for a London-based residential and commercial construction company. Built to establish trust and drive enquiries, with service showcases, project galleries, testimonials, and a clear conversion flow.",
     quote: "",
     link: null,
     images: {
